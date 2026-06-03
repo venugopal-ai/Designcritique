@@ -1,0 +1,1016 @@
+{
+  "users": [
+    {
+      "email": "Venugopal.vego@gmsil.vom",
+      "onboarded": true,
+      "name": "Venu Gopal",
+      "persona": "pm"
+    },
+    {
+      "email": "qwertyui@1111",
+      "onboarded": true,
+      "name": "Venu Gopal",
+      "persona": "designer"
+    },
+    {
+      "email": "Venu@gmail.con",
+      "onboarded": true,
+      "name": "Venu",
+      "persona": "pm"
+    }
+  ],
+  "projects": [
+    {
+      "id": "1780478477807-zjhr66c",
+      "name": "Test Design Review",
+      "description": "Checking the login flow designs",
+      "email": "Venugopal.vego@gmsil.vom",
+      "createdAt": "2026-06-03T09:21:17.807Z"
+    },
+    {
+      "id": "1780479556387-8fb8pn3",
+      "name": "Test 2 ",
+      "description": "Onboardinr review",
+      "email": "Venugopal.vego@gmsil.vom",
+      "createdAt": "2026-06-03T09:39:16.387Z"
+    },
+    {
+      "id": "1780479875551-ub097ym",
+      "name": "Pocket Vet",
+      "description": "",
+      "email": "qwertyui@1111",
+      "createdAt": "2026-06-03T09:44:35.551Z"
+    },
+    {
+      "id": "1780482743067-ystbnbp",
+      "name": "New chats ",
+      "description": "",
+      "email": "qwertyui@1111",
+      "createdAt": "2026-06-03T10:32:23.067Z",
+      "pinned": true
+    },
+    {
+      "id": "1780482760449-bftbbi2",
+      "name": "Test Project",
+      "description": "",
+      "email": "qwertyui@1111",
+      "createdAt": "2026-06-03T10:32:40.449Z",
+      "pinned": true
+    },
+    {
+      "id": "1780483824719-scxfmus",
+      "name": "Test project",
+      "description": "",
+      "email": "Venu@gmail.con",
+      "createdAt": "2026-06-03T10:50:24.720Z"
+    },
+    {
+      "id": "1780484783550-rn3moio",
+      "name": "Project 2",
+      "description": "",
+      "email": "Venu@gmail.con",
+      "createdAt": "2026-06-03T11:06:23.550Z"
+    }
+  ],
+  "chats": [
+    {
+      "id": "1780478491413-e1ankwh",
+      "projectId": "1780478477807-zjhr66c",
+      "name": "Login screen",
+      "createdAt": "2026-06-03T09:21:31.413Z"
+    },
+    {
+      "id": "1780479376516-r3wf3gm",
+      "projectId": "1780478477807-zjhr66c",
+      "name": "Success Screen",
+      "createdAt": "2026-06-03T09:36:16.516Z"
+    },
+    {
+      "id": "1780479756281-ymhtjf9",
+      "projectId": "1780479556387-8fb8pn3",
+      "name": "Test Solution",
+      "createdAt": "2026-06-03T09:42:36.281Z"
+    },
+    {
+      "id": "1780479889262-814w5ha",
+      "projectId": "1780479875551-ub097ym",
+      "name": "Consultation screen",
+      "createdAt": "2026-06-03T09:44:49.262Z"
+    },
+    {
+      "id": "1780480370491-uhrgouj",
+      "projectId": "1780479875551-ub097ym",
+      "name": "new chat",
+      "createdAt": "2026-06-03T09:52:50.491Z"
+    },
+    {
+      "id": "1780480954205-scs7lc9",
+      "projectId": "1780479875551-ub097ym",
+      "name": "test 3",
+      "createdAt": "2026-06-03T10:02:34.205Z"
+    },
+    {
+      "id": "1780481253001-mkncwlc",
+      "projectId": "1780479875551-ub097ym",
+      "name": "Test",
+      "createdAt": "2026-06-03T10:07:33.001Z"
+    },
+    {
+      "id": "1780481521200-0ydzwb3",
+      "projectId": "1780479875551-ub097ym",
+      "name": "test 4",
+      "createdAt": "2026-06-03T10:12:01.200Z"
+    },
+    {
+      "id": "1780482768011-53dqcsq",
+      "projectId": "1780482760449-bftbbi2",
+      "name": "Untitled Chat",
+      "createdAt": "2026-06-03T10:32:48.011Z"
+    },
+    {
+      "id": "1780482770007-tf16ch2",
+      "projectId": "1780482743067-ystbnbp",
+      "name": "Product Checkout Screen",
+      "createdAt": "2026-06-03T10:32:50.007Z"
+    },
+    {
+      "id": "1780483826251-g83xetc",
+      "projectId": "1780483824719-scxfmus",
+      "name": "Product Checkout Screen",
+      "createdAt": "2026-06-03T10:50:26.251Z"
+    },
+    {
+      "id": "1780484786895-747scn3",
+      "projectId": "1780484783550-rn3moio",
+      "name": "Product Checkout Screen",
+      "createdAt": "2026-06-03T11:06:26.895Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "1780478640337-b3qqu8m",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "user",
+      "text": "Uploaded a design screenshot for review.",
+      "images": [
+        "/uploads/1780478640205-tev3pde.png"
+      ],
+      "timestamp": "2026-06-03T09:24:00.337Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478641196-hngfn3l",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨\n\nBefore I run the analysis, could you tell me a little bit about the context?\n1. **What is the product/business goal of this screen?** (e.g. improve user checkout, increase signup rate)\n2. **Who is the user and what is their primary goal?** (e.g. purchase an item, select a plan)\n\nPlease fill out the form on the right canvas or type your answers here.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:01.196Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478652762-ewxe41d",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "user",
+      "text": "Farmer Need Quick access to veterinary guidance when cattle health affects milk production and daily income. Difficulty finding available vets in time during illness or biological cycles.  Veterinarian Reality Vets cover multiple villages and spend most of their time traveling.Video consultations help assess symptoms quickly and guide farmers remotely.  Why Internal Veterinarians Ensures trusted and verified veterinary advice for farmers. Helps Nitara maintain consistent consultation quality during MVP.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:12.762Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478653640-dk8dyh9",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "Got it, thanks for providing that context. You can review and refine these goals on the right canvas at any time. Once ready, click \"Run Design Critique\" to start the audit.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:13.640Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478665782-l0ylsol",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "user",
+      "text": "Goal : Introduce the PocketVet consultation service and build immediate trust so farmers feel confident starting a veterinary consultation.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:25.782Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478666636-lpydhqk",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "Got it, thanks for providing that context. You can review and refine these goals on the right canvas at any time. Once ready, click \"Run Design Critique\" to start the audit.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:26.636Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478677770-juw5na8",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "user",
+      "text": "Trust-building visual of veterinarian with cattle A friendly veterinarian image holding a calf helps farmers quickly understand that the service is related to cattle care and reinforces credibility.  Connect with Vet instantly”  Farmers often face delays in reaching veterinarians. Highlighting instant connection communicates that help is available quickly during cattle health issues.  Simple benefit explanation using icons  Key benefits such as 24/7 access, Nitara expert panel, and digital prescription are presented in a simple scannable format to make the service easy to understand.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:37.770Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478678602-2w3x0l8",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "Got it, thanks for providing that context. You can review and refine these goals on the right canvas at any time. Once ready, click \"Run Design Critique\" to start the audit.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:38.602Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478686802-cndt73w",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "user",
+      "text": "Allow farmers to choose the language they are most comfortable speaking so they can communicate clearly with the veterinarian during the consultation.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:46.802Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478687625-l1eyazd",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "Got it, thanks for providing that context. You can review and refine these goals on the right canvas at any time. Once ready, click \"Run Design Critique\" to start the audit.",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:47.625Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780478687924-dqej7wr",
+      "chatId": "1780478491413-e1ankwh",
+      "sender": "assistant",
+      "text": "Analysis complete! 🎉\n\nI have evaluated the interface across Accessibility, Heuristics, and Psychology principles. \n\nYou can click on the **pins/dots** on the screenshot to explore specific visual issues, and read the actionable remedies below the canvas. Let me know if you want to focus on any specific violation!",
+      "images": [],
+      "timestamp": "2026-06-03T09:24:47.924Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780479384121-ehkkutk",
+      "chatId": "1780479376516-r3wf3gm",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780479383963-yrmoiys.png"
+      ],
+      "timestamp": "2026-06-03T09:36:24.121Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479384961-l875207",
+      "chatId": "1780479376516-r3wf3gm",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨\n\nCould you please describe the **business goals** and **user goals** of this screen? Knowing this helps me verify if the visual hierarchy and checkout flows align with what you want to achieve.",
+      "images": [],
+      "timestamp": "2026-06-03T09:36:24.961Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479399097-kmsg19e",
+      "chatId": "1780479376516-r3wf3gm",
+      "sender": "user",
+      "text": "Farmer Need Quick access to veterinary guidance when cattle health affects milk production and daily income. Difficulty finding available vets in time during illness or biological cycles.  Veterinarian Reality Vets cover multiple villages and spend most of their time traveling.Video consultations help assess symptoms quickly and guide farmers remotely.  Why Internal Veterinarians Ensures trusted and verified veterinary advice for farmers. Helps Nitara maintain consistent consultation quality during MVP.",
+      "images": [],
+      "timestamp": "2026-06-03T09:36:39.097Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479399128-ptgjcvi",
+      "chatId": "1780479376516-r3wf3gm",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T09:36:39.128Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479399269-b2onniq",
+      "chatId": "1780479376516-r3wf3gm",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T09:36:39.269Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780479761773-v90loo2",
+      "chatId": "1780479756281-ymhtjf9",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780479761658-8keme7a.png"
+      ],
+      "timestamp": "2026-06-03T09:42:41.773Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479762608-slmdnr2",
+      "chatId": "1780479756281-ymhtjf9",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨\n\nCould you please describe the **business goals** and **user goals** of this screen? Knowing this helps me verify if the visual hierarchy and checkout flows align with what you want to achieve.",
+      "images": [],
+      "timestamp": "2026-06-03T09:42:42.608Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479770289-qqizvyv",
+      "chatId": "1780479756281-ymhtjf9",
+      "sender": "user",
+      "text": "Check the interface ",
+      "images": [],
+      "timestamp": "2026-06-03T09:42:50.289Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479770323-br6yf9d",
+      "chatId": "1780479756281-ymhtjf9",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T09:42:50.323Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479770423-9uwoigr",
+      "chatId": "1780479756281-ymhtjf9",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T09:42:50.423Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780479896168-6k8cypw",
+      "chatId": "1780479889262-814w5ha",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780479896122-dbio9ht.png"
+      ],
+      "timestamp": "2026-06-03T09:44:56.168Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780479897012-qpd70mw",
+      "chatId": "1780479889262-814w5ha",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨\n\nCould you please describe the **business goals** and **user goals** of this screen? Knowing this helps me verify if the visual hierarchy and checkout flows align with what you want to achieve.",
+      "images": [],
+      "timestamp": "2026-06-03T09:44:57.012Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780480385745-yhk9t9y",
+      "chatId": "1780480370491-uhrgouj",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780480385695-r4lx9lm.png"
+      ],
+      "timestamp": "2026-06-03T09:53:05.745Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780480961654-a3pm6of",
+      "chatId": "1780480954205-scs7lc9",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780480961595-8u8j3n0.png"
+      ],
+      "timestamp": "2026-06-03T10:02:41.654Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481260147-o00sof7",
+      "chatId": "1780481253001-mkncwlc",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780481260044-lpngyf7.png"
+      ],
+      "timestamp": "2026-06-03T10:07:40.147Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481260192-hitajd5",
+      "chatId": "1780481253001-mkncwlc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:07:40.192Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481260369-d0i8qkf",
+      "chatId": "1780481253001-mkncwlc",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T10:07:40.369Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481537561-a7m1vla",
+      "chatId": "1780481521200-0ydzwb3",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780481537534-xfsbr3m.png"
+      ],
+      "timestamp": "2026-06-03T10:12:17.561Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481537601-r27tbif",
+      "chatId": "1780481521200-0ydzwb3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:12:17.601Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481537797-47blwpr",
+      "chatId": "1780481521200-0ydzwb3",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T10:12:17.797Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481560120-a3l4zi5",
+      "chatId": "1780481521200-0ydzwb3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:12:40.120Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780481560206-fe673bn",
+      "chatId": "1780481521200-0ydzwb3",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T10:12:40.206Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780482788609-7mdveh9",
+      "chatId": "1780482770007-tf16ch2",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780482788543-a1rs5g9.png"
+      ],
+      "timestamp": "2026-06-03T10:33:08.609Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780482788656-rehmpxm",
+      "chatId": "1780482770007-tf16ch2",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:33:08.656Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780482789740-hdnmg97",
+      "chatId": "1780482770007-tf16ch2",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T10:33:09.740Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780482794621-63365t5",
+      "chatId": "1780482770007-tf16ch2",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:33:14.621Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780482794699-1mxpmc6",
+      "chatId": "1780482770007-tf16ch2",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T10:33:14.699Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780483838900-kdhbgi1",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780483838868-arb2u6q.png"
+      ],
+      "timestamp": "2026-06-03T10:50:38.900Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780483838934-9g5pqsg",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:50:38.934Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780483839235-axxgoab",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T10:50:39.235Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780483845461-gac35od",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T10:50:45.461Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780483845547-5w8ugpq",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T10:50:45.547Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780484643753-6no6y1z",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780484643725-1kx7gv2.png"
+      ],
+      "timestamp": "2026-06-03T11:04:03.753Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484643790-jiy3gco",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T11:04:03.790Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484643893-vg3c3v5",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T11:04:03.893Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484792101-1mzgq25",
+      "chatId": "1780484786895-747scn3",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780484792057-qnoyo4k.png"
+      ],
+      "timestamp": "2026-06-03T11:06:32.101Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484792152-9aky23t",
+      "chatId": "1780484786895-747scn3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T11:06:32.152Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484792297-f6mqgbv",
+      "chatId": "1780484786895-747scn3",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T11:06:32.297Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484794950-82t33fd",
+      "chatId": "1780484786895-747scn3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot based on your business goal... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T11:06:34.950Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780484795051-9sh2fti",
+      "chatId": "1780484786895-747scn3",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot:",
+      "images": [],
+      "timestamp": "2026-06-03T11:06:35.051Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780485377826-41p0dfh",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "user",
+      "text": "Uploaded design screenshot for analysis.",
+      "images": [
+        "/uploads/1780485377793-bgow2te.png"
+      ],
+      "timestamp": "2026-06-03T11:16:17.826Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780485377875-1q74rms",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T11:16:17.875Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780485378077-5u4165y",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T11:16:18.077Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780485695859-sm5rwh9",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "user",
+      "text": "HHHH",
+      "images": [
+        "/uploads/1780485607945-zmr45ag.png"
+      ],
+      "timestamp": "2026-06-03T11:21:35.859Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780485696354-x0anjdm",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "Analyzing screenshot to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T11:21:36.354Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780485697451-zrh2sm7",
+      "chatId": "1780483826251-g83xetc",
+      "sender": "assistant",
+      "text": "I've received your mockup screen! 🎨 Based on my analysis, this looks like a **Product Checkout Screen**.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T11:21:37.451Z",
+      "hasCritique": false
+    }
+  ],
+  "critiques": [
+    {
+      "id": "critique-1780478687889",
+      "messageId": "1780478640337-b3qqu8m",
+      "chatId": "1780478491413-e1ankwh",
+      "imagePath": "/uploads/1780478640205-tev3pde.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T09:24:47.889Z"
+    },
+    {
+      "id": "critique-1780479399187",
+      "messageId": "1780479399097-kmsg19e",
+      "chatId": "1780479376516-r3wf3gm",
+      "imagePath": "/uploads/1780479383963-yrmoiys.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T09:36:39.187Z"
+    },
+    {
+      "id": "critique-1780479770368",
+      "messageId": "1780479770289-qqizvyv",
+      "chatId": "1780479756281-ymhtjf9",
+      "imagePath": "/uploads/1780479761658-8keme7a.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T09:42:50.368Z"
+    },
+    {
+      "id": "critique-1780481560160",
+      "messageId": "1780481537561-a7m1vla",
+      "chatId": "1780481521200-0ydzwb3",
+      "imagePath": "/uploads/1780481537534-xfsbr3m.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T10:12:40.160Z"
+    },
+    {
+      "id": "critique-1780482794659",
+      "messageId": "1780482788609-7mdveh9",
+      "chatId": "1780482770007-tf16ch2",
+      "imagePath": "/uploads/1780482788543-a1rs5g9.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T10:33:14.659Z"
+    },
+    {
+      "id": "critique-1780483845502",
+      "messageId": "1780483838900-kdhbgi1",
+      "chatId": "1780483826251-g83xetc",
+      "imagePath": "/uploads/1780483838868-arb2u6q.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T10:50:45.502Z"
+    },
+    {
+      "id": "critique-1780484794999",
+      "messageId": "1780484792101-1mzgq25",
+      "chatId": "1780484786895-747scn3",
+      "imagePath": "/uploads/1780484792057-qnoyo4k.png",
+      "issues": [
+        {
+          "id": "mock-1",
+          "title": "Contrast issues on secondary CTA button",
+          "description": "The white text on the light blue secondary button achieves a contrast ratio of 2.1:1, violating WCAG 2.1 AA requirement of at least 4.5:1. This makes the action illegible for visually impaired users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 48,
+          "y": 62
+        },
+        {
+          "id": "mock-2",
+          "title": "Hick's Law violation: checkout choice overload",
+          "description": "Presenting 8 different shipping and packaging upgrade options on a single checkout step increases cognitive load. This decision friction is highly likely to drive cart abandonment.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 25,
+          "y": 40
+        },
+        {
+          "id": "mock-3",
+          "title": "Inconsistent typography sizing in form labels",
+          "description": "The email address input uses a 14px bold font, whereas the password input uses 12px light font. This visual inconsistency disrupts layout hierarchy and violates design system patterns.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 75,
+          "y": 28
+        },
+        {
+          "id": "mock-4",
+          "title": "Fitts's Law: Target click zone is too small",
+          "description": "The \"Terms and Conditions\" close button is only 16x16px. It needs to be at least 44x44px to accommodate comfortable thumb clicks, especially on mobile devices.",
+          "severity": "high",
+          "category": "heuristic",
+          "x": 88,
+          "y": 15
+        }
+      ],
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "createdAt": "2026-06-03T11:06:34.999Z"
+    }
+  ]
+}
