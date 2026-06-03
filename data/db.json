@@ -58,11 +58,11 @@
       "pinned": true
     },
     {
-      "id": "1780487184112-ugzg99r",
-      "name": "Test 1",
+      "id": "1780487532496-nnqb5mw",
+      "name": "Design 1",
       "description": "",
       "email": "Venu@gmail.con",
-      "createdAt": "2026-06-03T11:46:24.112Z"
+      "createdAt": "2026-06-03T11:52:12.496Z"
     }
   ],
   "chats": [
@@ -127,10 +127,10 @@
       "createdAt": "2026-06-03T10:32:50.007Z"
     },
     {
-      "id": "1780487186445-6zen3tz",
-      "projectId": "1780487184112-ugzg99r",
+      "id": "1780487534513-fyeqyh3",
+      "projectId": "1780487532496-nnqb5mw",
       "name": "Product Screen",
-      "createdAt": "2026-06-03T11:46:26.445Z"
+      "createdAt": "2026-06-03T11:52:14.513Z"
     }
   ],
   "messages": [
@@ -495,41 +495,68 @@
       "hasCritique": true
     },
     {
-      "id": "1780487202621-t2vzm4r",
-      "chatId": "1780487186445-6zen3tz",
+      "id": "1780487567893-1f66jr5",
+      "chatId": "1780487534513-fyeqyh3",
       "sender": "user",
-      "text": "Let's do the design review",
+      "text": "Do the critique of this screen where farmer will start online consultation from this screen",
       "images": [
-        "/uploads/1780487192236-9akhzeb.png"
+        "/uploads/1780487541071-5qxtn4u.png"
       ],
-      "timestamp": "2026-06-03T11:46:42.621Z",
+      "timestamp": "2026-06-03T11:52:47.893Z",
       "hasCritique": false
     },
     {
-      "id": "1780487202733-1s3ie60",
-      "chatId": "1780487186445-6zen3tz",
+      "id": "1780487567991-wppm1vv",
+      "chatId": "1780487534513-fyeqyh3",
       "sender": "assistant",
       "text": "Analyzing screenshot(s) to detect screen type and context... ⏳",
       "images": [],
-      "timestamp": "2026-06-03T11:46:42.733Z",
+      "timestamp": "2026-06-03T11:52:47.991Z",
       "hasCritique": false
     },
     {
-      "id": "1780487204254-sn7zat9",
-      "chatId": "1780487186445-6zen3tz",
+      "id": "1780487572913-u3lpwiy",
+      "chatId": "1780487534513-fyeqyh3",
       "sender": "assistant",
       "text": "I've received your mockup screen(s)! 🎨 Based on my analysis, this looks like a **Product Screen** flow.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
       "images": [],
-      "timestamp": "2026-06-03T11:46:44.254Z",
+      "timestamp": "2026-06-03T11:52:52.913Z",
       "hasCritique": false
     },
     {
-      "id": "1780487227539-q4rhc8v",
-      "chatId": "1780487186445-6zen3tz",
+      "id": "1780487588031-rlv59un",
+      "chatId": "1780487534513-fyeqyh3",
       "sender": "assistant",
       "text": "Analyzing 1 screenshot(s) based on your goals... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
       "images": [],
-      "timestamp": "2026-06-03T11:47:07.539Z",
+      "timestamp": "2026-06-03T11:53:08.031Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780487589044-1cf4gwv",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot(s):",
+      "images": [],
+      "timestamp": "2026-06-03T11:53:09.044Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780487666753-1ju7m2c",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "Okay just focus on the Heuristics",
+      "images": [],
+      "timestamp": "2026-06-03T11:54:26.754Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780487667617-8t3b5di",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "I'm ready to review your mockups! You can upload a new screenshot at any time by clicking the image icon below.",
+      "images": [],
+      "timestamp": "2026-06-03T11:54:27.617Z",
       "hasCritique": false
     }
   ],
@@ -765,25 +792,25 @@
       "createdAt": "2026-06-03T10:33:14.659Z"
     },
     {
-      "id": "critique-1780487232422-0-wpmc",
-      "messageId": "1780487202621-t2vzm4r",
-      "chatId": "1780487186445-6zen3tz",
-      "imagePath": "/uploads/1780487192236-9akhzeb.png",
+      "id": "critique-1780487589011-0-ymhe",
+      "messageId": "1780487567893-1f66jr5",
+      "chatId": "1780487534513-fyeqyh3",
+      "imagePath": "/uploads/1780487541071-5qxtn4u.png",
       "issues": [
         {
-          "id": "fallback-1780487202621-t2vzm4r-0-1",
+          "id": "fallback-1780487567893-1f66jr5-0-1",
           "title": "Contrast issues on text labels",
-          "description": "The contrast on this screenshot in 1780487192236-9akhzeb.png violates WCAG color standards.",
+          "description": "The contrast on this screenshot in 1780487541071-5qxtn4u.png violates WCAG color standards.",
           "severity": "high",
           "category": "accessibility",
           "x": 50,
           "y": 50
         }
       ],
-      "remedies": "### Audit Fallback for 1780487192236-9akhzeb.png\nFailed to run Gemini analysis. Spacing and contrast guidelines should be verified manually.",
-      "createdAt": "2026-06-03T11:47:12.422Z",
-      "businessGoal": "Establish brand trust through consistent UI styling",
-      "userGoal": "Complete the checkout or onboarding process efficiently"
+      "remedies": "### Audit Fallback for 1780487541071-5qxtn4u.png\nFailed to run Gemini analysis. Spacing and contrast guidelines should be verified manually.",
+      "createdAt": "2026-06-03T11:53:09.011Z",
+      "businessGoal": "Reduce form-completion friction and text field drop-off",
+      "userGoal": "Scan the screen information and understand the next primary action"
     }
   ]
 }
