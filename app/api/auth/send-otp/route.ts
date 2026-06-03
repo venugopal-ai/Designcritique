@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
     let user = db.users.find(u => u.email === email);
     if (user) {
       user.otpCode = otpCode;
+      user.onboarded = true; // Skip onboarding for existing database users
     } else {
       user = {
         email,
