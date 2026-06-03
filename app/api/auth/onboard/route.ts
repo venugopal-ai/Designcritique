@@ -17,16 +17,22 @@ export async function POST(req: NextRequest) {
     }
 
     const db = await readDb();
-    const user = db.users.find(u => u.email === email);
+    let user = db.users.find(u => u.email === email);
 
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      user = {
+        email,
+        name,
+        persona,
+        onboarded: true
+      };
+      db.users.push(user);
+    } else {
+      // Update details and mark as onboarded
+      user.name = name;
+      user.persona = persona;
+      user.onboarded = true;
     }
-
-    // Update details and mark as onboarded
-    user.name = name;
-    user.persona = persona;
-    user.onboarded = true;
     
     await writeDb(db);
 

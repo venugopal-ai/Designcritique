@@ -153,55 +153,27 @@ export async function writeDb(db: DatabaseSchema): Promise<void> {
 
     // 1. Sync Users
     if (!isUnchanged('users')) {
-      const { data: curUsers } = await supabase.from('users').select('email');
-      const curEmails = curUsers?.map(u => u.email) || [];
-      const activeEmails = db.users.map(u => u.email);
-      const usersToDelete = curEmails.filter(e => !activeEmails.includes(e));
-      if (usersToDelete.length > 0) {
-        await supabase.from('users').delete().in('email', usersToDelete);
-      }
       if (db.users.length > 0) {
         await supabase.from('users').upsert(db.users);
       }
     }
 
-    // 2. Sync Projects (Cascade deletes chats, messages, critiques)
+    // 2. Sync Projects
     if (!isUnchanged('projects')) {
-      const { data: curProjects } = await supabase.from('projects').select('id');
-      const curProjIds = curProjects?.map(p => p.id) || [];
-      const activeProjIds = db.projects.map(p => p.id);
-      const projToDelete = curProjIds.filter(id => !activeProjIds.includes(id));
-      if (projToDelete.length > 0) {
-        await supabase.from('projects').delete().in('id', projToDelete);
-      }
       if (db.projects.length > 0) {
         await supabase.from('projects').upsert(db.projects);
       }
     }
 
-    // 3. Sync Chats (Cascade deletes messages, critiques)
+    // 3. Sync Chats
     if (!isUnchanged('chats')) {
-      const { data: curChats } = await supabase.from('chats').select('id');
-      const curChatIds = curChats?.map(c => c.id) || [];
-      const activeChatIds = db.chats.map(c => c.id);
-      const chatsToDelete = curChatIds.filter(id => !activeChatIds.includes(id));
-      if (chatsToDelete.length > 0) {
-        await supabase.from('chats').delete().in('id', chatsToDelete);
-      }
       if (db.chats.length > 0) {
         await supabase.from('chats').upsert(db.chats);
       }
     }
 
-    // 4. Sync Messages (Cascade deletes critiques)
+    // 4. Sync Messages
     if (!isUnchanged('messages')) {
-      const { data: curMessages } = await supabase.from('messages').select('id');
-      const curMsgIds = curMessages?.map(m => m.id) || [];
-      const activeMsgIds = db.messages.map(m => m.id);
-      const msgToDelete = curMsgIds.filter(id => !activeMsgIds.includes(id));
-      if (msgToDelete.length > 0) {
-        await supabase.from('messages').delete().in('id', msgToDelete);
-      }
       if (db.messages.length > 0) {
         await supabase.from('messages').upsert(db.messages);
       }
@@ -209,13 +181,6 @@ export async function writeDb(db: DatabaseSchema): Promise<void> {
 
     // 5. Sync Critiques
     if (!isUnchanged('critiques')) {
-      const { data: curCritiques } = await supabase.from('critiques').select('id');
-      const curCritIds = curCritiques?.map(c => c.id) || [];
-      const activeCritIds = db.critiques.map(c => c.id);
-      const critToDelete = curCritIds.filter(id => !activeCritIds.includes(id));
-      if (critToDelete.length > 0) {
-        await supabase.from('critiques').delete().in('id', critToDelete);
-      }
       if (db.critiques.length > 0) {
         await supabase.from('critiques').upsert(db.critiques);
       }

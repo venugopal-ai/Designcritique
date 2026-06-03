@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { readDb, writeDb, Chat } from '@/lib/db';
+import { readDb, writeDb, Chat, supabase } from '@/lib/db';
 
 export async function GET(req: NextRequest) {
   try {
@@ -102,6 +102,9 @@ export async function DELETE(req: NextRequest) {
 
     // Cascade delete critiques
     db.critiques = db.critiques.filter(c => c.chatId !== chatId);
+
+    // Delete chat from database directly
+    await supabase.from('chats').delete().eq('id', chatId);
 
     await writeDb(db);
 
