@@ -74,7 +74,7 @@ export default function DashboardPage() {
   const [showLogoutMenu, setShowLogoutMenu] = useState(false);
 
   // Critique data storage indexed by messageId
-  const [critiques, setCritiques] = useState<{ [messageId: string]: Critique }>({});
+  const [critiques, setCritiques] = useState<{ [messageId: string]: Critique[] }>({});
   
   // Creation Modals & Inputs
   const [showProjModal, setShowProjModal] = useState(false);
@@ -258,9 +258,12 @@ export default function DashboardPage() {
         const critRes = await fetch(`/api/critique?chatId=${chatId}`);
         const critData = await critRes.json();
         if (critData.critiques) {
-          const critMap: { [messageId: string]: Critique } = {};
+          const critMap: { [messageId: string]: Critique[] } = {};
           critData.critiques.forEach((c: Critique) => {
-            critMap[c.messageId] = c;
+            if (!critMap[c.messageId]) {
+              critMap[c.messageId] = [];
+            }
+            critMap[c.messageId].push(c);
           });
           setCritiques(critMap);
         }
@@ -708,8 +711,8 @@ export default function DashboardPage() {
       if (imagesToSend.length > 0) {
         setLastUploadedImage(imagesToSend[0]);
         
-        // Reset states but keep wizard closed during pre-analysis loading
-        setGoalWizardStep(0); 
+        // Open wizard immediately during pre-analysis loading
+        setGoalWizardStep(1); 
         setPreAnalysisLoading(true);
         setDetectedScreenType('');
         setSuggestedBizGoals([]);
@@ -1510,138 +1513,151 @@ export default function DashboardPage() {
                       </div>
 
                       {/* INLINE CRITIQUE CUSTOM COMPONENT BLOCK */}
-                      {m.hasCritique && critique && (
-                        <div className="mt-4 border border-[var(--color-border-default)] rounded-[var(--radius-2xl)] bg-[var(--color-surface-card)] shadow-md overflow-hidden">
-                          
-                          {/* Image with Pins */}
-                          <div className="p-6 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-center relative">
-                            <div className="relative border border-[var(--color-border-default)] rounded-[var(--radius-lg)] overflow-hidden shadow-sm max-w-full max-h-[350px] bg-white">
-                              <img src={critique.imagePath} alt="Audited screen" className="max-w-full max-h-[350px] object-contain" />
+                      {m.hasCritique && critiques[m.id] && critiques[m.id].length > 0 && (
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mt-4">
+                          {critiques[m.id].map((crit, critIdx) => (
+                            <div key={crit.id} className="border border-[var(--color-border-default)] rounded-[var(--radius-2xl)] bg-[var(--color-surface-card)] shadow-md overflow-hidden flex flex-col">
                               
-                              {/* Pins absolute mapped */}
-                              {getFilteredPins(critique).map((pin) => (
+                              {/* Header showing image path name */}
+                              <div className="px-4 py-2.5 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-between">
+                                <span className="text-[10px] font-bold text-[var(--color-text-primary)] truncate max-w-[80%]" title={crit.imagePath.split('/').pop()}>
+                                  {crit.imagePath.split('/').pop() || 'Screenshot'}
+                                </span>
+                                <span className="text-[8px] text-[var(--color-text-tertiary)] font-bold uppercase tracking-wider bg-white border border-[var(--color-border-default)] px-1.5 py-0.5 rounded">
+                                  Screen {critIdx + 1}
+                                </span>
+                              </div>
+
+                              {/* Image with Pins */}
+                              <div className="p-4 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-center relative shrink-0">
+                                <div className="relative border border-[var(--color-border-default)] rounded-[var(--radius-lg)] overflow-hidden shadow-xs max-w-full max-h-[250px] bg-white">
+                                  <img src={crit.imagePath} alt={`Audited screen ${critIdx + 1}`} className="max-w-full max-h-[250px] object-contain" />
+                                  
+                                  {/* Pins absolute mapped */}
+                                  {getFilteredPins(crit).map((pin) => (
+                                    <button
+                                      key={pin.id}
+                                      onClick={() => setSelectedPin(pin)}
+                                      style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
+                                      className={`absolute transform -translate-x-1/2 -translate-y-1/2 h-5.5 w-5.5 rounded-full border flex items-center justify-center font-bold text-[9px] shadow-md transition cursor-pointer hover:scale-125 ${
+                                        selectedPin?.id === pin.id ? 'scale-125 ring-2 ring-indigo-500 ring-offset-2 ring-offset-white' : ''
+                                      } ${
+                                        pin.category === 'accessibility' 
+                                          ? 'bg-[var(--color-red-500)] border-red-300 text-white animate-pulse' 
+                                          : pin.category === 'heuristic'
+                                          ? 'bg-[var(--color-brand-500)] border-brand-300 text-white'
+                                          : 'bg-[var(--color-amber-500)] border-amber-300 text-white'
+                                      }`}
+                                    >
+                                      !
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Category Filters inside bubble */}
+                              <div className="px-3 py-2 border-b border-[var(--color-border-default)] flex gap-1 select-none overflow-x-auto shrink-0 bg-[var(--color-surface-card)]">
                                 <button
-                                  key={pin.id}
-                                  onClick={() => setSelectedPin(pin)}
-                                  style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
-                                  className={`absolute transform -translate-x-1/2 -translate-y-1/2 h-5.5 w-5.5 rounded-full border flex items-center justify-center font-bold text-[9px] shadow-md transition cursor-pointer hover:scale-125 ${
-                                    selectedPin?.id === pin.id ? 'scale-125 ring-2 ring-indigo-500 ring-offset-2 ring-offset-white' : ''
-                                  } ${
-                                    pin.category === 'accessibility' 
-                                      ? 'bg-[var(--color-red-500)] border-red-300 text-white animate-pulse' 
-                                      : pin.category === 'heuristic'
-                                      ? 'bg-[var(--color-brand-500)] border-brand-300 text-white'
-                                      : 'bg-[var(--color-amber-500)] border-amber-300 text-white'
+                                  onClick={() => setCategoryFilter('all')}
+                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition cursor-pointer ${
+                                    categoryFilter === 'all' 
+                                      ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-gray-100)]'
                                   }`}
                                 >
-                                  !
+                                  All
                                 </button>
-                              ))}
-                            </div>
-                          </div>
-
-                          {/* Category Filters inside bubble */}
-                          <div className="px-4 py-2.5 border-b border-[var(--color-border-default)] flex gap-2 select-none overflow-x-auto shrink-0 bg-[var(--color-surface-card)]">
-                            <button
-                              onClick={() => setCategoryFilter('all')}
-                              className={`text-[9px] px-2.5 py-0.5 rounded-full border transition cursor-pointer ${
-                                categoryFilter === 'all' 
-                                  ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
-                                  : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-gray-100)]'
-                              }`}
-                            >
-                              All
-                            </button>
-                            <button
-                              onClick={() => setCategoryFilter('accessibility')}
-                              className={`text-[9px] px-2.5 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                categoryFilter === 'accessibility' 
-                                  ? 'border-[var(--color-border-error)] bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] font-semibold' 
-                                  : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                              }`}
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-red-500)]" />
-                              Accessibility
-                            </button>
-                            <button
-                              onClick={() => setCategoryFilter('heuristic')}
-                              className={`text-[9px] px-2.5 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                categoryFilter === 'heuristic' 
-                                  ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
-                                  : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                              }`}
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-brand-500)]" />
-                              Heuristics
-                            </button>
-                            <button
-                              onClick={() => setCategoryFilter('psychology')}
-                              className={`text-[9px] px-2.5 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                categoryFilter === 'psychology' 
-                                  ? 'border-[var(--color-border-warning)] bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] font-semibold' 
-                                  : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                              }`}
-                            >
-                              <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-amber-500)]" />
-                              Psychology
-                            </button>
-                          </div>
-
-                          {/* Selected Pin info details */}
-                          {selectedPin ? (
-                            <div className="p-4 bg-[var(--color-surface-sunken)] border-b border-[var(--color-border-default)] animate-fade-in">
-                              <div className="flex items-start justify-between">
-                                <div className="space-y-0.5">
-                                  <span className={`text-[8px] uppercase tracking-wider font-extrabold px-2 py-0.5 rounded ${
-                                    selectedPin.severity === 'high' 
-                                      ? 'bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] border border-[var(--color-border-error)]' 
-                                      : selectedPin.severity === 'medium'
-                                      ? 'bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] border border-[var(--color-border-warning)]'
-                                      : 'bg-[var(--color-gray-150)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                                  }`}>
-                                    {selectedPin.severity} Severity
-                                  </span>
-                                  <h4 className="text-[11px] font-bold mt-1 text-[var(--color-text-primary)]">{selectedPin.title}</h4>
-                                </div>
-                                <button 
-                                  onClick={() => setSelectedPin(null)} 
-                                  className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] text-[10px] cursor-pointer hover:underline"
+                                <button
+                                  onClick={() => setCategoryFilter('accessibility')}
+                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                    categoryFilter === 'accessibility' 
+                                      ? 'border-[var(--color-border-error)] bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] font-semibold' 
+                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                  }`}
                                 >
-                                  Clear Pin
+                                  <span className="h-1 w-1 rounded-full bg-[var(--color-red-500)]" />
+                                  Accessibility
+                                </button>
+                                <button
+                                  onClick={() => setCategoryFilter('heuristic')}
+                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                    categoryFilter === 'heuristic' 
+                                      ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                  }`}
+                                >
+                                  <span className="h-1 w-1 rounded-full bg-[var(--color-brand-500)]" />
+                                  Heuristics
+                                </button>
+                                <button
+                                  onClick={() => setCategoryFilter('psychology')}
+                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                    categoryFilter === 'psychology' 
+                                      ? 'border-[var(--color-border-warning)] bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] font-semibold' 
+                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                  }`}
+                                >
+                                  <span className="h-1 w-1 rounded-full bg-[var(--color-amber-500)]" />
+                                  Psychology
                                 </button>
                               </div>
-                              <p className="text-[10px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{selectedPin.description}</p>
-                            </div>
-                          ) : (
-                            <div className="p-3 bg-[var(--color-brand-50)] border-b border-[var(--color-brand-100)] text-[var(--color-text-secondary)] text-[10px] flex items-center gap-1.5">
-                              <Lightbulb className="h-3.5 w-3.5 text-[var(--color-brand-500)] shrink-0" />
-                              <span>Click any **! pin** on the screenshot to inspect the design violation.</span>
-                            </div>
-                          )}
 
-                          {/* Remedies list */}
-                          <div className="p-4 space-y-2.5">
-                            <h4 className="text-xs font-bold text-[var(--color-text-brand)] border-b border-[var(--color-border-default)] pb-1.5 flex items-center gap-1.5">
-                              <Lightbulb className="h-4 w-4" />
-                              Actionable Solutions & Remedies
-                            </h4>
-                            <div className="text-[11px] text-[var(--color-text-secondary)] space-y-3 leading-relaxed">
-                              {critique.remedies.split('\n').map((line, idx) => {
-                                if (line.startsWith('####')) {
-                                  return <h5 key={idx} className="text-xs font-bold text-[var(--color-text-primary)] mt-3 leading-tight">{line.replace('####', '')}</h5>;
-                                }
-                                if (line.startsWith('###')) {
-                                  return <h4 key={idx} className="text-xs font-extrabold text-[var(--color-text-brand)] mt-4 border-b border-[var(--color-border-subtle)] pb-1 leading-normal">{line.replace('###', '')}</h4>;
-                                }
-                                if (line.startsWith('* ') || line.startsWith('- ')) {
-                                  return <li key={idx} className="ml-4 list-disc text-[var(--color-text-secondary)] pl-0.5">{line.substring(2)}</li>;
-                                }
-                                if (line.trim() === '') return null;
-                                return <p key={idx}>{line}</p>;
-                              })}
-                            </div>
-                          </div>
+                              {/* Selected Pin info details */}
+                              {selectedPin && crit.issues.some(p => p.id === selectedPin.id) ? (
+                                <div className="p-3.5 bg-[var(--color-surface-sunken)] border-b border-[var(--color-border-default)] animate-fade-in flex-1">
+                                  <div className="flex items-start justify-between">
+                                    <div className="space-y-0.5">
+                                      <span className={`text-[7px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded ${
+                                        selectedPin.severity === 'high' 
+                                          ? 'bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] border border-[var(--color-border-error)]' 
+                                          : selectedPin.severity === 'medium'
+                                          ? 'bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] border border-[var(--color-border-warning)]'
+                                          : 'bg-[var(--color-gray-150)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                      }`}>
+                                        {selectedPin.severity} Severity
+                                      </span>
+                                      <h4 className="text-[10px] font-bold mt-1 text-[var(--color-text-primary)]">{selectedPin.title}</h4>
+                                    </div>
+                                    <button 
+                                      onClick={() => setSelectedPin(null)} 
+                                      className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] text-[9px] cursor-pointer hover:underline"
+                                    >
+                                      Clear Pin
+                                    </button>
+                                  </div>
+                                  <p className="text-[9px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{selectedPin.description}</p>
+                                </div>
+                              ) : (
+                                <div className="p-2.5 bg-[var(--color-brand-50)] border-b border-[var(--color-brand-100)] text-[var(--color-text-secondary)] text-[9px] flex items-center gap-1.5">
+                                  <Lightbulb className="h-3 w-3 text-[var(--color-brand-500)] shrink-0" />
+                                  <span>Click any **! pin** on the screenshot to inspect details.</span>
+                                </div>
+                              )}
 
+                              {/* Remedies list */}
+                              <div className="p-3.5 space-y-2 flex-1">
+                                <h4 className="text-[10px] font-bold text-[var(--color-text-brand)] border-b border-[var(--color-border-default)] pb-1 flex items-center gap-1.5">
+                                  <Lightbulb className="h-3.5 w-3.5" />
+                                  Remedies & Solutions
+                                </h4>
+                                <div className="text-[10px] text-[var(--color-text-secondary)] space-y-2 leading-normal max-h-[160px] overflow-y-auto pr-1">
+                                  {crit.remedies.split('\n').map((line, idx) => {
+                                    if (line.startsWith('####')) {
+                                      return <h5 key={idx} className="text-[10px] font-bold text-[var(--color-text-primary)] mt-2.5 leading-tight">{line.replace('####', '')}</h5>;
+                                    }
+                                    if (line.startsWith('###')) {
+                                      return <h4 key={idx} className="text-[10px] font-extrabold text-[var(--color-text-brand)] mt-3 border-b border-[var(--color-border-subtle)] pb-0.5 leading-normal">{line.replace('###', '')}</h4>;
+                                    }
+                                    if (line.startsWith('* ') || line.startsWith('- ')) {
+                                      return <li key={idx} className="ml-3 list-disc text-[var(--color-text-secondary)] pl-0.5">{line.substring(2)}</li>;
+                                    }
+                                    if (line.trim() === '') return null;
+                                    return <p key={idx}>{line}</p>;
+                                  })}
+                                </div>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       )}
 
@@ -1709,7 +1725,23 @@ export default function DashboardPage() {
                     </button>
                   </div>
 
-                  <form onSubmit={handleWizardSubmit} className="space-y-4">
+                  {preAnalysisLoading ? (
+                    <div className="flex flex-col items-center justify-center py-10 text-center space-y-4">
+                      <div className="relative">
+                        <div className="h-12 w-12 rounded-full border-4 border-[var(--color-brand-100)] border-t-[var(--color-brand-500)] animate-spin" />
+                        <Sparkles className="h-5 w-5 text-[var(--color-brand-500)] absolute inset-0 m-auto animate-pulse" />
+                      </div>
+                      <div className="space-y-1">
+                        <h4 className="text-xs font-bold text-[var(--color-text-primary)]">
+                          Gemini is analyzing your screen...
+                        </h4>
+                        <p className="text-[10px] text-[var(--color-text-tertiary)] max-w-[280px] leading-relaxed">
+                          Detecting user flows, screen elements, and context to generate tailored design goals.
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleWizardSubmit} className="space-y-4">
                     {/* Quick Apply Previous Goals */}
                     {previousProjectGoals && goalWizardStep < 3 && (
                       <button
@@ -1894,6 +1926,7 @@ export default function DashboardPage() {
                       </button>
                     </div>
                   </form>
+                )}
                 </div>
               )}
 
