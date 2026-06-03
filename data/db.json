@@ -17,6 +17,30 @@
       "onboarded": true,
       "name": "Venu",
       "persona": "pm"
+    },
+    {
+      "email": "Venugopal.vego.knl@gmail.com",
+      "onboarded": true,
+      "name": "Venu",
+      "persona": "founder"
+    },
+    {
+      "email": "trial_1780491000178@smartcritique.com",
+      "name": "Trial User",
+      "persona": "Founder & Builder",
+      "onboarded": true
+    },
+    {
+      "email": "trial_1780491000196@smartcritique.com",
+      "name": "Trial User",
+      "persona": "Founder & Builder",
+      "onboarded": true
+    },
+    {
+      "email": "venugopal.vego.knl@gmail.com",
+      "onboarded": true,
+      "name": "Venu",
+      "persona": "pm"
     }
   ],
   "projects": [
@@ -63,6 +87,27 @@
       "description": "",
       "email": "Venu@gmail.con",
       "createdAt": "2026-06-03T11:52:12.496Z"
+    },
+    {
+      "id": "1780489787521-aajfcp8",
+      "name": "Chat",
+      "description": "",
+      "email": "Venu@gmail.con",
+      "createdAt": "2026-06-03T12:29:47.521Z"
+    },
+    {
+      "id": "proj-trial-1780491000180",
+      "name": "My First Audit Project",
+      "description": "Explore the Smart Critique dashboard during your 3-upload free trial.",
+      "email": "trial_1780491000178@smartcritique.com",
+      "createdAt": "2026-06-03T12:50:00.180Z"
+    },
+    {
+      "id": "proj-trial-1780491000198",
+      "name": "My First Audit Project",
+      "description": "Explore the Smart Critique dashboard during your 3-upload free trial.",
+      "email": "trial_1780491000196@smartcritique.com",
+      "createdAt": "2026-06-03T12:50:00.198Z"
     }
   ],
   "chats": [
@@ -131,6 +176,30 @@
       "projectId": "1780487532496-nnqb5mw",
       "name": "Product Screen",
       "createdAt": "2026-06-03T11:52:14.513Z"
+    },
+    {
+      "id": "1780488989215-y2p2mc4",
+      "projectId": "1780487532496-nnqb5mw",
+      "name": "Hi",
+      "createdAt": "2026-06-03T12:16:29.215Z"
+    },
+    {
+      "id": "1780489789364-s8f578w",
+      "projectId": "1780489787521-aajfcp8",
+      "name": "Hi",
+      "createdAt": "2026-06-03T12:29:49.364Z"
+    },
+    {
+      "id": "chat-trial-1780491000180",
+      "projectId": "proj-trial-1780491000180",
+      "name": "Audit Trial Session",
+      "createdAt": "2026-06-03T12:50:00.180Z"
+    },
+    {
+      "id": "chat-trial-1780491000198",
+      "projectId": "proj-trial-1780491000198",
+      "name": "Audit Trial Session",
+      "createdAt": "2026-06-03T12:50:00.198Z"
     }
   ],
   "messages": [
@@ -558,6 +627,356 @@
       "images": [],
       "timestamp": "2026-06-03T11:54:27.617Z",
       "hasCritique": false
+    },
+    {
+      "id": "1780488018762-6yeaazy",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "Uploaded design screenshot(s) for analysis.",
+      "images": [
+        "/uploads/1780488016764-gyubqun.png"
+      ],
+      "timestamp": "2026-06-03T12:00:18.762Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488018795-5tpdluy",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot(s) to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:00:18.795Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488024519-ctt78ls",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "I've received your mockup screen(s)! 🎨 Based on my analysis, this looks like a **Product Screen** flow.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T12:00:24.519Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488037877-6qk96aq",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analyzing 1 screenshot(s) based on your goals... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:00:37.877Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488049865-qwb2gy9",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot(s):",
+      "images": [],
+      "timestamp": "2026-06-03T12:00:49.865Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780488089228-kj41h3n",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "Focus on the heuristics for this screen",
+      "images": [],
+      "timestamp": "2026-06-03T12:01:29.228Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488090089-s04wlqn",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "I'm ready to review your mockups! You can upload a new screenshot at any time by clicking the image icon below.",
+      "images": [],
+      "timestamp": "2026-06-03T12:01:30.089Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488702803-ctgkc91",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "hi",
+      "images": [],
+      "timestamp": "2026-06-03T12:11:42.803Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488711396-x5gtyj3",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Hi there!\n\nI've already provided the initial accessibility feedback regarding contrast issues for your screens. Unfortunately, the detailed heuristic analysis wasn't available in the last run due to a technical limitation.\n\nHow can I assist you further with your mockups today?",
+      "images": [],
+      "timestamp": "2026-06-03T12:11:51.396Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488731002-wtuogsy",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "Let me update new screen",
+      "images": [],
+      "timestamp": "2026-06-03T12:12:11.002Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488735203-4pgtjjp",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Okay, please upload your new screen when you're ready! I'll be here to analyze it once you do.",
+      "images": [],
+      "timestamp": "2026-06-03T12:12:15.203Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488742192-u3wr43g",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "Uploaded design screenshot(s) for analysis.",
+      "images": [
+        "/uploads/1780488740563-d9s8iay.png"
+      ],
+      "timestamp": "2026-06-03T12:12:22.192Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488742240-64p2ixz",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analyzing screenshot(s) to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:12:22.240Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488747597-httggsm",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "I've received your mockup screen(s)! 🎨 Based on my analysis, this looks like a **Service Introduction Screen** flow.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T12:12:27.597Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488760717-01fqd7m",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analyzing 1 screenshot(s) based on your goals... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:12:40.717Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780488799622-ecry9vf",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot(s):",
+      "images": [],
+      "timestamp": "2026-06-03T12:13:19.622Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780488997258-x5pu6v8",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "user",
+      "text": "Hi",
+      "images": [],
+      "timestamp": "2026-06-03T12:16:37.258Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489001948-5evswzx",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Hi there! I've completed the audit of your screenshots and generated some critiques.\n\nHow would you like to proceed? We can focus on:\n\n1.  **Usability Heuristics:** To identify common usability issues.\n2.  **Accessibility (WCAG):** To pinpoint any accessibility and contrast problems.\n3.  **Overall Design & UX:** For a broader discussion on copywriting, visual styling, layout, or general user experience.\n\nJust let me know what you'd like to dive into first!",
+      "images": [],
+      "timestamp": "2026-06-03T12:16:41.948Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489057384-kjm6ff4",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "user",
+      "text": "Improve my copy of the screen",
+      "images": [
+        "/uploads/1780489048133-8163h7q.png"
+      ],
+      "timestamp": "2026-06-03T12:17:37.384Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489057416-kjoaujt",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Analyzing screenshot(s) to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:17:37.416Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489066004-2jcuybr",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "I've received your mockup screen(s)! 🎨 Based on my analysis, this looks like a **Service Offering Page** flow.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T12:17:46.004Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489076759-8v7xd1t",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Analyzing 1 screenshot(s) based on your goals... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:17:56.759Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489100174-pw94xwj",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot(s):",
+      "images": [],
+      "timestamp": "2026-06-03T12:18:20.174Z",
+      "hasCritique": true
+    },
+    {
+      "id": "1780489137177-78zgc6u",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "user",
+      "text": "can you suggest better copy for my screen",
+      "images": [],
+      "timestamp": "2026-06-03T12:18:57.177Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489149621-esag8o5",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Absolutely! Let's refine the copy on your screen to improve clarity, build trust, and enhance the overall value proposition.\n\nHere are some suggestions to improve your screen's copy, based on the audit:\n\n### 1. Main Heading\n**Current:** \"Connect with Vet instantly\"\n**Suggestion:** This is good, but could be more benefit-oriented or action-driven.\n*   **Option 1 (Benefit-driven):** \"Expert Vet Care, Instantly.\" (More concise, emphasizes expertise)\n*   **Option 2 (Benefit-driven):** \"Get Instant Vet Support for Your Pet.\" (Highlights 'your pet', making it personal)\n*   **Option 3 (Action-oriented):** \"Consult a Vet Now – Instant Care for Your Pet.\"\n\n### 2. Feature List\n**Current:**\n*   \"Get instant help anytime, day or night\"\n*   \"Nitara expert panel\"\n*   \"Video consultation with digital prescription\"\n*   \"1 Free follow up within 7 days Free!\"\n\n**Suggestions:**\n*   **\"Get instant help anytime, day or night\"**: This is already clear and effective. No changes needed.\n*   **\"Nitara expert panel\"**: This lacks clarity.\n    *   **Option 1 (Clarify 'Nitara'):** \"Consult with Nitara Certified Experts\" (If 'Nitara' is a certification/standard).\n    *   **Option 2 (Focus on expertise):** \"Access to Verified Vet Specialists\" or \"Experienced Vet Panel\"\n    *   **Option 3 (Add context if space allows):** \"Nitara Expert Panel (Trusted & Certified Vets)\" – ideally, with a small info icon to explain 'Nitara' in detail.\n*   **\"Video consultation with digital prescription\"**: This is clear and effective. No changes needed.\n*   **\"1 Free follow up within 7 days Free!\"**: The \"Free!\" tag is redundant and visually inconsistent.\n    *   **Suggestion:** \"1 **Free** follow-up within 7 days\" (Emphasize \"Free\" within the existing text for consistency).\n\n### 3. Legal Disclaimer and Agreement\n**Current:** \"By consulting, you agree to our terms of service, privacy policy.\" (Pre-checked checkbox)\n\n**Suggestions:**\n*   **Uncheck the checkbox by default** to ensure explicit consent.\n*   **Increase font size** for readability (as per accessibility critique).\n*   **Rephrase for clarity and trust:**\n    *   **Option 1 (With checkbox):** \"I agree to the [Terms of Service] and [Privacy Policy].\" (User must actively check this).\n    *   **Option 2 (If agreement is implied by CTA):** Remove the checkbox. Place the text: \"By proceeding, you agree to our [Terms of Service] and [Privacy Policy].\" (Ensure links are clear and tappable).\n\n### 4. Call to Action (CTA) Button\n**Current:** \"Consult now for just ₹199 ₹499\"\n\n**Suggestions:**\n*   **Improve Price Hierarchy:** Make the discounted price more prominent and the original price less so, while maintaining legibility.\n*   **Refined CTA Copy:**\n    *   **Option 1 (Current approach, better hierarchy):** \"Consult Now for Just **₹199** ~~₹499~~\"\n    *   **Option 2 (Emphasize savings):** \"Start Your Consultation – Save Now for **₹199**\"\n    *   **Option 3 (More direct):** \"Get Started: **₹199** (<s>₹499</s>)\"\n\nBy implementing these changes, you can create a more transparent, trustworthy, and user-friendly experience on your service offering page!",
+      "images": [],
+      "timestamp": "2026-06-03T12:19:09.621Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489562404-x8r99yn",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "user",
+      "text": "hi",
+      "images": [],
+      "timestamp": "2026-06-03T12:26:02.404Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489572981-s8y9615",
+      "chatId": "1780487534513-fyeqyh3",
+      "sender": "assistant",
+      "text": "Hi there!\n\nYou've just uploaded a new screen, and I've completed the analysis for it. Here's the detailed critique report covering accessibility, psychological principles, and usability heuristics for your latest design:\n\n---\n\n**Screen 3 (1780488740563-d9s8iay.png)**\n\n### Identified Issues:\n\n*   **[ACCESSIBILITY - high] Low Contrast Legal Text:** The legal text 'By consulting, you agree to our terms of service, privacy policy.' has insufficient contrast and a very small font size, making it difficult to read and reducing accessibility.\n*   **[PSYCHOLOGY - high] Pre-checked Consent Checkbox:** The checkbox for agreeing to terms and conditions is pre-selected by default, which can be a dark pattern that reduces user control and may violate consent regulations.\n*   **[HEURISTIC - medium] Ambiguous Pricing Display:** The pricing in the CTA '₹199 ₹499' is not clearly formatted; the original price should be explicitly struck-through next to the discounted price for better clarity and impact.\n*   **[HEURISTIC - medium] Inconsistent Icon Styles:** The icons accompanying the feature list display varied visual styles (e.g., outline vs. filled), which can detract from visual consistency and professionalism.\n*   **[ACCESSIBILITY - medium] Small 'Free!' Badge Text:** The 'Free!' text within the green badge is very small and has low contrast against its green background, making it hard to discern for some users.\n*   **[PSYCHOLOGY - medium] Unclear 'Nitara' Term:** The term 'Nitara expert panel' is a brand-specific name that lacks immediate explanation, potentially causing confusion and increasing cognitive load for new users unfamiliar with 'Nitara'.\n*   **[ACCESSIBILITY - low] Small Checkbox Touch Target:** The clickable area for the checkbox itself appears to be only the small square, which is a common accessibility issue for touch targets on mobile devices.\n\n### Remedies:\n\n### 1. Improve Legal Text Readability and Accessibility\n*   **Increase Contrast:** Change the text color of the legal disclaimer ('By consulting, you agree to our...') to a darker shade to meet WCAG 2.1 AA contrast requirements (e.g., `#333333` on a white background).\n*   **Increase Font Size:** Use a larger font size for the legal text (e.g., 12-14px) to enhance readability for all users.\n*   **Enlarge Touch Target:** Make the entire line of text for the terms and privacy policy, including the checkbox, a tappable area. This significantly improves the touch target size, making it easier for users to interact with the checkbox, especially on mobile devices (Fitts's Law).\n\n### 2. Ensure Explicit Consent\n*   **Uncheck by Default:** The checkbox for agreeing to terms and conditions must be unchecked by default. Users should actively choose to opt-in, respecting user autonomy and adhering to privacy regulations (e.g., GDPR, CCPA).\n*   **User Feedback:** If a user attempts to proceed without checking the box, provide a clear, non-intrusive message explaining that agreement is required to continue.\n\n### 3. Clarify Pricing Display\n*   **Standardize Discount Format:** Display the original price with a clear strikethrough **before** the new, discounted price. For example, `~~₹499~~ ₹199`. This immediately communicates the value proposition and discount.\n*   **Add Savings Context:** Consider adding a small text indicating the percentage or amount saved (e.g., 'Save ₹300' or '60% Off') to further highlight the deal.\n\n### 4. Harmonize Iconography\n*   **Adopt a Consistent Style:** Select a single visual style for all icons (e.g., all outline, all filled, or a specific stroke weight and corner radius). This creates a more polished and professional look, improving visual consistency across the interface.\n*   **Use an Icon Set:** Utilize an established icon library or design a custom set with uniform characteristics.\n\n### 5. Enhance 'Free!' Badge Readability\n*   **Increase Text Contrast:** Ensure the 'Free!' text has sufficient contrast against its green background. Consider using white text on the green badge or adjusting the shade of green to meet WCAG 2.1 AA requirements (minimum 4.5:1 contrast ratio).\n*   **Increase Text Size:** Enlarge the font size of 'Free!' to make it more legible at a glance.\n\n### 6. Provide Context for 'Nitara'\n*   **Brief Explanation:** For clarity, especially for new users, add a short explanatory phrase or subtitle to 'Nitara expert panel' (e.g., 'Nitara expert panel: Our certified veterinary specialists').\n*   **Progressive Disclosure:** Alternatively, implement a tooltip or an 'i' icon that, when tapped, reveals more information about what 'Nitara' entails, reducing initial cognitive load while allowing access to details for interested users.\n\n---\n\nLet me know if you'd like to dive deeper into any specific area or have other questions!",
+      "images": [],
+      "timestamp": "2026-06-03T12:26:12.981Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489743368-1x5cpik",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "user",
+      "text": "hi how are you",
+      "images": [],
+      "timestamp": "2026-06-03T12:29:03.368Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489749262-uxoz53s",
+      "chatId": "1780488989215-y2p2mc4",
+      "sender": "assistant",
+      "text": "Hello there! I'm doing great, thank you for asking!\n\nWe just finished discussing some suggestions to improve the copy on your screen. Did you have any further questions about those suggestions, or would you like to explore other aspects of the design, such as:\n\n*   **Usability Heuristics**\n*   **Accessibility (WCAG)**\n*   **Overall Design & UX** (layout, visual styling, etc.)\n\nJust let me know how you'd like to proceed!",
+      "images": [],
+      "timestamp": "2026-06-03T12:29:09.262Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489791736-5i91px2",
+      "chatId": "1780489789364-s8f578w",
+      "sender": "user",
+      "text": "Hi",
+      "images": [],
+      "timestamp": "2026-06-03T12:29:51.736Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489797520-0fx89d5",
+      "chatId": "1780489789364-s8f578w",
+      "sender": "assistant",
+      "text": "Hi! I've completed the audit of your screenshots and have the critiques ready.\n\nWhat would you like to focus on first? We can look into:\n*   **Usability Heuristics**\n*   **Accessibility (WCAG)**\n*   **Overall User Experience & Design Feedback** (covering visual styling, layout, copywriting, and more)",
+      "images": [],
+      "timestamp": "2026-06-03T12:29:57.520Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489816928-rof5h07",
+      "chatId": "1780489789364-s8f578w",
+      "sender": "user",
+      "text": "Tell me how to get six pack body",
+      "images": [],
+      "timestamp": "2026-06-03T12:30:16.928Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780489822387-o6utfte",
+      "chatId": "1780489789364-s8f578w",
+      "sender": "assistant",
+      "text": "It looks like your last question is outside the scope of our design review. I'm here to help you improve the design and user experience of your screens based on the audit I completed.\n\nWould you like to dive into the critiques I have for you regarding:\n*   **Usability Heuristics**\n*   **Accessibility (WCAG)**\n*   **Overall User Experience & Design Feedback**",
+      "images": [],
+      "timestamp": "2026-06-03T12:30:22.387Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780491029192-yl4ppw2",
+      "chatId": "chat-trial-1780491000198",
+      "sender": "user",
+      "text": "evalaute design heauristics",
+      "images": [
+        "/uploads/1780491017588-gqgpq1s.png"
+      ],
+      "timestamp": "2026-06-03T12:50:29.192Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780491029226-p8p6b65",
+      "chatId": "chat-trial-1780491000198",
+      "sender": "assistant",
+      "text": "Analyzing screenshot(s) to detect screen type and context... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:50:29.226Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780491034822-m0e0few",
+      "chatId": "chat-trial-1780491000198",
+      "sender": "assistant",
+      "text": "I've received your mockup screen(s)! 🎨 Based on my analysis, this looks like a **Vet Consultation Service** flow.\n\nI will be asking a few questions to understand your goals before running the full diagnosis.",
+      "images": [],
+      "timestamp": "2026-06-03T12:50:34.822Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780491049800-frnifgp",
+      "chatId": "chat-trial-1780491000198",
+      "sender": "assistant",
+      "text": "Analyzing 1 screenshot(s) based on your goals... Evaluating accessibility compliance (WCAG), usability heuristics, and psychological principles. Please wait... ⏳",
+      "images": [],
+      "timestamp": "2026-06-03T12:50:49.800Z",
+      "hasCritique": false
+    },
+    {
+      "id": "1780491092329-orh0c0b",
+      "chatId": "chat-trial-1780491000198",
+      "sender": "assistant",
+      "text": "Analysis complete! Below is the interactive critique report for your screenshot(s):",
+      "images": [],
+      "timestamp": "2026-06-03T12:51:32.329Z",
+      "hasCritique": true
     }
   ],
   "critiques": [
@@ -604,7 +1023,7 @@
           "y": 15
         }
       ],
-      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active API key was detected in your `.env.local` file.*",
       "createdAt": "2026-06-03T09:24:47.889Z"
     },
     {
@@ -650,7 +1069,7 @@
           "y": 15
         }
       ],
-      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active API key was detected in your `.env.local` file.*",
       "createdAt": "2026-06-03T09:36:39.187Z"
     },
     {
@@ -696,7 +1115,7 @@
           "y": 15
         }
       ],
-      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active API key was detected in your `.env.local` file.*",
       "createdAt": "2026-06-03T09:42:50.368Z"
     },
     {
@@ -742,7 +1161,7 @@
           "y": 15
         }
       ],
-      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active API key was detected in your `.env.local` file.*",
       "createdAt": "2026-06-03T10:12:40.160Z"
     },
     {
@@ -788,7 +1207,7 @@
           "y": 15
         }
       ],
-      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active `GEMINI_API_KEY` was detected in your `.env.local` file.*",
+      "remedies": "### Actionable Remedies & Alternatives\n\nHere is how you can resolve the highlighted design issues to improve your conversion rates and ensure accessibility compliance:\n\n#### 1. Boost CTA Contrast (Accessibility)\n*   **Alternative Design**: Change the background color of the secondary button to a darker slate (`#1e293b`) or keep the button background transparent and use a strong dark indigo text outline (`text-indigo-600 border-indigo-500`).\n*   **Why**: Elevates the contrast ratio to **6.8:1**, ensuring readability for all users and satisfying WCAG 2.1 compliance.\n\n#### 2. Group and progressive-disclose shipping options (Psychology)\n*   **Alternative Design**: Collapse the 8 options into 2 core categories: **Standard** and **Express**. Use a drop-down or sliding drawer to reveal sub-options (like custom packaging) only *after* the user selects their primary choice.\n*   **Why**: Reduces cognitive load (Hick's Law), keeping the focus entirely on completing the transaction.\n\n#### 3. Standardize Input Labels (Heuristics)\n*   **Alternative Design**: Apply a single global class to all form labels: `text-sm font-medium text-zinc-300`.\n*   **Why**: Restores design system symmetry, helping the user scan the input fields quickly without subconscious visual distraction.\n\n*Note: You are currently running in **Demo Sandbox Mode** with mock data because no active API key was detected in your `.env.local` file.*",
       "createdAt": "2026-06-03T10:33:14.659Z"
     },
     {
@@ -807,10 +1226,256 @@
           "y": 50
         }
       ],
-      "remedies": "### Audit Fallback for 1780487541071-5qxtn4u.png\nFailed to run Gemini analysis. Spacing and contrast guidelines should be verified manually.",
+      "remedies": "### Audit Fallback for 1780487541071-5qxtn4u.png\nFailed to run Smart Critique analysis. Spacing and contrast guidelines should be verified manually.",
       "createdAt": "2026-06-03T11:53:09.011Z",
       "businessGoal": "Reduce form-completion friction and text field drop-off",
       "userGoal": "Scan the screen information and understand the next primary action"
+    },
+    {
+      "id": "critique-1780488049823-0-ck5j",
+      "messageId": "1780488018762-6yeaazy",
+      "chatId": "1780487534513-fyeqyh3",
+      "imagePath": "/uploads/1780488016764-gyubqun.png",
+      "issues": [
+        {
+          "id": "fallback-1780488018762-6yeaazy-0-1",
+          "title": "Contrast issues on text labels",
+          "description": "The contrast on this screenshot in 1780488016764-gyubqun.png violates WCAG color standards.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "remedies": "### Audit Fallback for 1780488016764-gyubqun.png\nFailed to run Smart Critique analysis. Spacing and contrast guidelines should be verified manually.",
+      "createdAt": "2026-06-03T12:00:49.823Z",
+      "businessGoal": "Establish brand trust through consistent UI styling",
+      "userGoal": "Scan the screen information and understand the next primary action"
+    },
+    {
+      "id": "critique-1780488799568-0-1d02",
+      "messageId": "1780488742192-u3wr43g",
+      "chatId": "1780487534513-fyeqyh3",
+      "imagePath": "/uploads/1780488740563-d9s8iay.png",
+      "issues": [
+        {
+          "id": "issue-1",
+          "title": "Low Contrast Legal Text",
+          "description": "The legal text 'By consulting, you agree to our terms of service, privacy policy.' has insufficient contrast and a very small font size, making it difficult to read and reducing accessibility.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 12,
+          "y": 80
+        },
+        {
+          "id": "issue-2",
+          "title": "Pre-checked Consent Checkbox",
+          "description": "The checkbox for agreeing to terms and conditions is pre-selected by default, which can be a dark pattern that reduces user control and may violate consent regulations.",
+          "severity": "high",
+          "category": "psychology",
+          "x": 6,
+          "y": 80
+        },
+        {
+          "id": "issue-3",
+          "title": "Ambiguous Pricing Display",
+          "description": "The pricing in the CTA '₹199 ₹499' is not clearly formatted; the original price should be explicitly struck-through next to the discounted price for better clarity and impact.",
+          "severity": "medium",
+          "category": "heuristic",
+          "x": 50,
+          "y": 89
+        },
+        {
+          "id": "issue-4",
+          "title": "Inconsistent Icon Styles",
+          "description": "The icons accompanying the feature list display varied visual styles (e.g., outline vs. filled), which can detract from visual consistency and professionalism.",
+          "severity": "medium",
+          "category": "heuristic",
+          "x": 11,
+          "y": 75
+        },
+        {
+          "id": "issue-5",
+          "title": "Small 'Free!' Badge Text",
+          "description": "The 'Free!' text within the green badge is very small and has low contrast against its green background, making it hard to discern for some users.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 80,
+          "y": 82
+        },
+        {
+          "id": "issue-6",
+          "title": "Unclear 'Nitara' Term",
+          "description": "The term 'Nitara expert panel' is a brand-specific name that lacks immediate explanation, potentially causing confusion and increasing cognitive load for new users unfamiliar with 'Nitara'.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 19,
+          "y": 73
+        },
+        {
+          "id": "issue-7",
+          "title": "Small Checkbox Touch Target",
+          "description": "The clickable area for the checkbox itself appears to be only the small square, which is a common accessibility issue for touch targets on mobile devices.",
+          "severity": "low",
+          "category": "accessibility",
+          "x": 6,
+          "y": 80
+        }
+      ],
+      "remedies": "## Remedies\n\n### 1. Improve Legal Text Readability and Accessibility (Issues 1 & 7)\n*   **Increase Contrast:** Change the text color of the legal disclaimer ('By consulting, you agree to our...') to a darker shade to meet WCAG 2.1 AA contrast requirements (e.g., #333333 on a white background). \n*   **Increase Font Size:** Use a larger font size for the legal text (e.g., 12-14px) to enhance readability for all users.\n*   **Enlarge Touch Target:** Make the entire line of text for the terms and privacy policy, including the checkbox, a tappable area. This significantly improves the touch target size, making it easier for users to interact with the checkbox, especially on mobile devices (Fitts's Law).\n\n### 2. Ensure Explicit Consent (Issue 2)\n*   **Uncheck by Default:** The checkbox for agreeing to terms and conditions must be unchecked by default. Users should actively choose to opt-in, respecting user autonomy and adhering to privacy regulations (e.g., GDPR, CCPA). \n*   **User Feedback:** If a user attempts to proceed without checking the box, provide a clear, non-intrusive message explaining that agreement is required to continue.\n\n### 3. Clarify Pricing Display (Issue 3)\n*   **Standardize Discount Format:** Display the original price with a clear strikethrough **before** the new, discounted price. For example, '~~₹499~~ ₹199'. This immediately communicates the value proposition and discount.\n*   **Add Savings Context:** Consider adding a small text indicating the percentage or amount saved (e.g., 'Save ₹300' or '60% Off') to further highlight the deal.\n\n### 4. Harmonize Iconography (Issue 4)\n*   **Adopt a Consistent Style:** Select a single visual style for all icons (e.g., all outline, all filled, or a specific stroke weight and corner radius). This creates a more polished and professional look, improving visual consistency across the interface.\n*   **Use an Icon Set:** Utilize an established icon library or design a custom set with uniform characteristics.\n\n### 5. Enhance 'Free!' Badge Readability (Issue 5)\n*   **Increase Text Contrast:** Ensure the 'Free!' text has sufficient contrast against its green background. Consider using white text on the green badge or adjusting the shade of green to meet WCAG 2.1 AA requirements (minimum 4.5:1 contrast ratio).\n*   **Increase Text Size:** Enlarge the font size of 'Free!' to make it more legible at a glance.\n\n### 6. Provide Context for 'Nitara' (Issue 6)\n*   **Brief Explanation:** For clarity, especially for new users, add a short explanatory phrase or subtitle to 'Nitara expert panel' (e.g., 'Nitara expert panel: Our certified veterinary specialists').\n*   **Progressive Disclosure:** Alternatively, implement a tooltip or an 'i' icon that, when tapped, reveals more information about what 'Nitara' entails, reducing initial cognitive load while allowing access to details for interested users.",
+      "createdAt": "2026-06-03T12:13:19.568Z",
+      "businessGoal": "Acquire new users for the Pocketvet service",
+      "userGoal": "Understand the benefits of the online vet consultation service"
+    },
+    {
+      "id": "critique-1780489100130-0-pci1",
+      "messageId": "1780489057384-kjm6ff4",
+      "chatId": "1780488989215-y2p2mc4",
+      "imagePath": "/uploads/1780489048133-8163h7q.png",
+      "issues": [
+        {
+          "id": "issue-1",
+          "title": "Small back button touch target",
+          "description": "The back arrow icon has a small visual size and likely a small touch target, making it difficult for users to accurately tap, failing WCAG touch target recommendations.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 10,
+          "y": 5
+        },
+        {
+          "id": "issue-2",
+          "title": "Unclear value proposition for 'Nitara'",
+          "description": "'Nitara expert panel' lacks immediate clarity for a new user. Without context, it's not clear what 'Nitara' signifies or the specific benefit it provides, increasing cognitive load.",
+          "severity": "medium",
+          "category": "psychology",
+          "x": 45,
+          "y": 68
+        },
+        {
+          "id": "issue-3",
+          "title": "Redundant & inconsistent 'Free!' tag",
+          "description": "The 'Free!' tag next to '1 Free follow up' is redundant and visually inconsistent with the rest of the list items. Its styling breaks the visual flow of the feature list.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 85,
+          "y": 82
+        },
+        {
+          "id": "issue-4",
+          "title": "Pre-checked agreement reduces trust",
+          "description": "The 'I agree' checkbox is pre-checked, which can reduce user trust and lead to users unknowingly agreeing to terms without explicit consent, potentially violating privacy principles.",
+          "severity": "high",
+          "category": "psychology",
+          "x": 12,
+          "y": 87
+        },
+        {
+          "id": "issue-5",
+          "title": "Small legal text size",
+          "description": "The legal disclaimer text ('By consulting, you agree to our terms of service, privacy policy') is too small, making it hard to read for users with visual impairments or on smaller screens.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 65,
+          "y": 87
+        },
+        {
+          "id": "issue-6",
+          "title": "Struck-through price low contrast",
+          "description": "The original price (₹499) is struck through with a very light gray color, making it difficult to read and discern, especially for users with low vision, failing WCAG contrast guidelines.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 85,
+          "y": 93
+        },
+        {
+          "id": "issue-7",
+          "title": "Inconsistent list item spacing",
+          "description": "The vertical spacing between list items appears slightly inconsistent, particularly with the wrapped text of 'Video consultation with digital prescription,' making the list feel less organized.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 50,
+          "y": 75
+        },
+        {
+          "id": "issue-8",
+          "title": "Poor price visual hierarchy",
+          "description": "The current (₹199) and original (₹499) prices lack clear visual hierarchy; the original price should be less prominent but still legible to emphasize the discount effectively.",
+          "severity": "medium",
+          "category": "heuristic",
+          "x": 75,
+          "y": 93
+        }
+      ],
+      "remedies": "## Detailed Remedies for UI Audit Issues\n\n### 1. Small back button touch target (Issue-1)\n*   **Solution**: Increase the interactive area (touch target) of the back arrow icon to at least 44x44 CSS pixels/DP. While the visual icon can remain its current size for aesthetic reasons, the padding around it should ensure a larger, easily tappable zone. This improves usability for all users, especially those with motor impairments.\n\n### 2. Unclear value proposition for 'Nitara' (Issue-2)\n*   **Solution**: Rephrase 'Nitara expert panel' to clearly convey a user benefit. Consider alternatives like:\n    *   \"Consult with certified experts.\"\n    *   \"Access to a panel of experienced veterinarians.\"\n    *   \"Trusted specialist consultations.\"\n*   If 'Nitara' is a known brand or certification, add a small info icon (i) next to it that, when tapped, provides a brief explanation of what 'Nitara' means and why it's beneficial.\n\n### 3. Redundant & inconsistent 'Free!' tag (Issue-3)\n*   **Solution**: Remove the green 'Free!' tag. The phrase \"1 Free follow up within 7 days\" already clearly communicates the benefit. If additional emphasis is desired, consider making the word \"Free\" bold within the sentence itself (e.g., \"1 **Free** follow up within 7 days\") to maintain visual consistency with the other list items.\n\n### 4. Pre-checked agreement reduces trust (Issue-4)\n*   **Solution**: Uncheck the checkbox by default. Users should be required to actively check the box to demonstrate explicit consent to the terms of service and privacy policy. This aligns with best practices for user trust and data privacy regulations (e.g., GDPR). If agreement is absolutely mandatory to proceed, consider rephrasing the Call to Action (CTA) button to something like \"Consult now and agree to terms\" or move the agreement statement closer to the button, making it clear that pressing the button implies agreement, removing the need for a checkbox altogether.\n\n### 5. Small legal text size (Issue-5)\n*   **Solution**: Increase the font size of the legal disclaimer text to a minimum of 14-16px. Ensure adequate line height (e.g., 1.5 times the font size) to improve readability. The linked text ('terms of service', 'privacy policy') should have sufficient contrast against the background and be clearly underlined or distinguished to indicate interactivity.\n\n### 6. Struck-through price low contrast (Issue-6)\n*   **Solution**: Adjust the color of the struck-through original price (₹499) to a darker shade. It should be legible and meet WCAG contrast guidelines (at least 4.5:1 for regular text) while still visually appearing as secondary to the discounted price. For example, use a medium gray that stands out against the blue button background but is still less prominent than the current price.\n\n### 7. Inconsistent list item spacing (Issue-7)\n*   **Solution**: Standardize the vertical spacing between all feature list items using consistent padding or margin values. Ensure the spacing between the icon and text is also uniform across all items. This creates a visually cleaner and more organized list, improving overall aesthetic appeal and readability.\n\n### 8. Poor price visual hierarchy (Issue-8)\n*   **Solution**: Emphasize the discounted price (₹199) by making it larger and/or bolder than the original, struck-through price. The original price (₹499) should be smaller and/or lighter (while maintaining sufficient contrast) to serve as an anchor point without competing visually. A clear hierarchy helps users quickly grasp the value proposition. For example: `Consult now for just **₹199** ~~₹499~~`.",
+      "createdAt": "2026-06-03T12:18:20.130Z",
+      "businessGoal": "Acquire new users for Pocketvet",
+      "userGoal": "Understand the service's value and features"
+    },
+    {
+      "id": "critique-1780491092179-0-yp7d",
+      "messageId": "1780491029192-yl4ppw2",
+      "chatId": "chat-trial-1780491000198",
+      "imagePath": "/uploads/1780491017588-gqgpq1s.png",
+      "issues": [
+        {
+          "id": "issue-1",
+          "title": "Struck price low contrast",
+          "description": "The struck-through original price (₹499) on the CTA button has insufficient contrast with the blue background, making it very difficult to read for most users.",
+          "severity": "high",
+          "category": "accessibility",
+          "x": 78,
+          "y": 90
+        },
+        {
+          "id": "issue-2",
+          "title": "Checkbox touch target too small",
+          "description": "The checkbox for agreeing to terms and privacy policy appears to have a small touch target, potentially leading to accidental taps or difficulty for users with motor impairments.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 8,
+          "y": 83
+        },
+        {
+          "id": "issue-3",
+          "title": "Legal links low contrast",
+          "description": "The 'terms of service' and 'privacy policy' links have low contrast against the surrounding text, making them hard to distinguish as clickable elements, especially for users with color vision deficiencies.",
+          "severity": "medium",
+          "category": "accessibility",
+          "x": 65,
+          "y": 83
+        },
+        {
+          "id": "issue-4",
+          "title": "'Free!' tag lacks prominence",
+          "description": "The 'Free!' tag for the follow-up consultation is visually understated and blends into the background, diminishing the visibility of a significant user benefit.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 78,
+          "y": 72
+        },
+        {
+          "id": "issue-5",
+          "title": "Header title ambiguity",
+          "description": "The header displays 'Pocketvet,' which is likely the app name, but it's unclear if this is the current screen's title or just the app brand, potentially causing minor confusion about navigation context.",
+          "severity": "low",
+          "category": "heuristic",
+          "x": 28,
+          "y": 5
+        },
+        {
+          "id": "issue-6",
+          "title": "Legal agreement placement friction",
+          "description": "Requiring agreement to terms and privacy policy right before the final CTA introduces a potential point of friction and minor cognitive load, potentially interrupting the conversion flow.",
+          "severity": "low",
+          "category": "psychology",
+          "x": 50,
+          "y": 84
+        }
+      ],
+      "remedies": "## Remedies for UI/UX Issues\n\n### 1. Improve Contrast for Struck-Through Price (Issue 1)\n*   **Solution:** Increase the contrast of the struck-through original price (₹499) against the blue button background. Consider using a lighter color (e.g., white or a light grey that passes WCAG contrast ratios) or placing it within a subtly contrasting element if the blue background must remain consistent.\n*   **Alternative:** Revise the price display to clearly show the saving. For example, display \"₹199\" prominently and next to it, \"Save ₹300\" or \"Original ₹499\" in a legible, slightly subdued style, rather than relying solely on a difficult-to-read strikethrough.\n\n### 2. Increase Checkbox Touch Target and Legal Links Contrast (Issues 2 & 3)\n*   **Checkbox Target:** Enlarge the tappable area for the checkbox. The entire text label (\"By consulting, you agree to...\") should also act as part of the tap target for the checkbox, adhering to WCAG 2.1 2.5.5 Target Size (minimum 44x44 CSS pixels).\n*   **Legal Links Contrast:** Change the color of \"terms of service\" and \"privacy policy\" to a distinct, high-contrast blue that clearly differentiates them from the surrounding body text and passes WCAG 2.1 1.4.3 Contrast (Minimum). Adding an underline can further improve their discoverability for users with color vision deficiencies.\n\n### 3. Enhance Prominence of 'Free!' Tag (Issue 4)\n*   **Solution:** Make the \"Free!\" tag more visually prominent. This could involve:\n    *   Increasing its font size or weight.\n    *   Improving the contrast of its background or text color to make it pop.\n    *   Using a more distinct badge design.\n    *   Integrating the \"Free\" benefit more directly into the main text, e.g., using bold text: \"**1 Free follow up** within 7 days.\"\n\n### 4. Clarify Header Title (Issue 5)\n*   **Solution:** Replace \"Pocketvet\" in the header with a clear, descriptive title for the current screen, such as \"Consult a Vet,\" \"Live Consultation,\" or \"Connect with a Vet.\" This aligns with the screen's primary purpose. The app name \"Pocketvet\" can be placed elsewhere for branding, or omitted from the top bar when a specific screen title is present.\n\n### 5. Optimize Legal Agreement Placement (Issue 6)\n*   **Solution:** While necessary, aim to minimize the cognitive load and friction this element introduces. \n    *   Ensure the checkbox is highly accessible (see remedy for issue 2). \n    *   Consider alternative phrasing for the legal agreement, such as: \"By tapping 'Consult now', you agree to our [terms of service] and [privacy policy].\" This removes the explicit checkbox interaction while still legally binding the user, making the primary CTA the point of agreement (pending legal counsel on specific requirements). If the checkbox is mandatory, ensure its purpose is clear and interaction is effortless.",
+      "createdAt": "2026-06-03T12:51:32.179Z",
+      "businessGoal": "Generate revenue through paid consultations",
+      "userGoal": "Get professional veterinary advice quickly for a pet"
     }
   ]
 }

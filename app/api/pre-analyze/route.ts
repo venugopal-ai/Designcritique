@@ -1,15 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import fs from 'fs';
-import path from 'path';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-
-function getMimeType(filePath: string): string {
-  if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
-    return 'image/jpeg';
-  }
-  return 'image/png';
-}
+import { getImageBufferAndMime } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
   try {
@@ -160,14 +152,8 @@ export async function POST(req: NextRequest) {
           }
         });
 
-        const absoluteImagePath = path.join(process.cwd(), 'public', imagePath);
-        if (!fs.existsSync(absoluteImagePath)) {
-          return NextResponse.json({ error: 'Image not found' }, { status: 404 });
-        }
-
-        const imageBuffer = fs.readFileSync(absoluteImagePath);
-        const base64Data = imageBuffer.toString('base64');
-        const mimeType = getMimeType(imagePath);
+        const { buffer, mimeType } = await getImageBufferAndMime(imagePath);
+        const base64Data = buffer.toString('base64');
 
         const prompt = `Analyze this user interface screenshot and the user's provided description/context:
 Description: "${userDescription || 'None'}"
@@ -211,7 +197,7 @@ Do not include markdown code block formatting. Return only raw JSON.`;
         userGoalDefined = !!json.userGoalDefined;
         extractedUserGoal = json.extractedUserGoal || '';
       } catch (err: any) {
-        console.error('Gemini pre-analyze failed, falling back to static:', err);
+        console.error('Smart Critique pre-analyze failed, falling back to static:', err);
         screenType = 'Product Screen';
         suggestedBusinessGoals = [
           'Improve visual hierarchy and checkout flow conversion',

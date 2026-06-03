@@ -10,7 +10,7 @@ export default async function HomePage() {
     redirect('/auth');
   }
 
-  const db = readDb();
+  const db = await readDb();
   const user = db.users.find(u => u.email === email);
 
   if (!user || !user.onboarded) {

@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     const user = db.users.find(u => u.email === email);
 
     if (!user) {
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     user.persona = persona;
     user.onboarded = true;
     
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({
       success: true,

@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Innoviti Product Intelligence — Design Critique System",
+  title: "Smart Critique",
   description: "AI-powered visual, heuristic, and accessibility design audits for product builders, designers, and PMs.",
 };
 

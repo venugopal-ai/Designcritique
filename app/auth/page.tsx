@@ -64,7 +64,7 @@ export default function AuthPage() {
           setMockOtp(data.otpCode);
         }
       }
-    } catch (err) {
+    } catch {
       setError('Failed to send verification code. Please try again.');
     } finally {
       setLoading(false);
@@ -98,8 +98,30 @@ export default function AuthPage() {
           setStep('onboarding');
         }
       }
-    } catch (err) {
+    } catch {
       setError('Invalid code or session expired.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Trial Initiation (Try without signing)
+  const handleStartTrial = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch('/api/auth/trial', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.error) {
+        setError(data.error);
+      } else {
+        router.push('/dashboard');
+      }
+    } catch {
+      setError('Failed to start free trial. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -132,7 +154,7 @@ export default function AuthPage() {
       } else {
         router.push('/dashboard');
       }
-    } catch (err) {
+    } catch {
       setError('Failed to save profile. Please try again.');
     } finally {
       setLoading(false);
@@ -156,7 +178,7 @@ export default function AuthPage() {
             <Sparkles className="h-5 w-5" />
           </div>
           <h1 className="text-xl font-bold tracking-tight text-[var(--color-text-brand)]">
-            Innoviti Product Intelligence
+            Smart Critique
           </h1>
           <p className="text-xs text-[var(--color-text-secondary)] mt-1.5 max-w-[280px]">
             Design-system aligned heuristic & accessibility audits
@@ -184,7 +206,7 @@ export default function AuthPage() {
                 <input
                   id="email"
                   type="email"
-                  placeholder="name@innoviti.com"
+                  placeholder="name@smartcritique.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="block w-full pl-10 pr-3 py-3 border-0 rounded-[var(--radius-lg)] bg-[var(--color-gray-100)] text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] focus:outline-none focus:bg-[var(--color-gray-50)] focus:ring-2 focus:ring-[var(--color-brand-500)]/20 focus:border-[var(--color-border-focus)] transition-all duration-150 text-xs h-11"
@@ -200,6 +222,24 @@ export default function AuthPage() {
             >
               {loading ? 'Sending Code...' : 'Get Instant Access'}
               <ChevronRight className="h-4 w-4" />
+            </button>
+            <p className="text-[10px] text-[var(--color-text-tertiary)] text-center mt-3 leading-normal">
+              By continuing, you agree to our <span className="text-[var(--color-brand-500)] underline hover:text-[var(--color-brand-600)] cursor-pointer">Terms of Service</span> and <span className="text-[var(--color-brand-500)] underline hover:text-[var(--color-brand-600)] cursor-pointer">Privacy Policy</span>.
+            </p>
+            
+            <div className="relative flex py-2 items-center">
+              <div className="flex-grow border-t border-[var(--color-border-subtle)]"></div>
+              <span className="flex-shrink mx-4 text-[10px] text-[var(--color-text-tertiary)] font-bold uppercase tracking-wider">Or</span>
+              <div className="flex-grow border-t border-[var(--color-border-subtle)]"></div>
+            </div>
+
+            <button
+              type="button"
+              onClick={handleStartTrial}
+              disabled={loading}
+              className="w-full h-11 flex items-center justify-center gap-2 rounded-[var(--radius-lg)] border border-[var(--color-brand-500)] text-[var(--color-brand-500)] hover:bg-[var(--color-brand-50)] font-semibold text-xs transition duration-150 cursor-pointer disabled:opacity-50"
+            >
+              Try without signing
             </button>
           </form>
         )}

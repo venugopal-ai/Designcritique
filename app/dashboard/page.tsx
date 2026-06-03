@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { 
   Plus, MessageSquare, Image as ImageIcon, Sparkles, Send, 
   LogOut, FolderPlus, Loader2, AlertCircle, AlertTriangle, 
-  Lightbulb, User, Maximize2, Minimize2, X, ArrowRight,
+  Lightbulb, User, X, ArrowRight,
   ChevronDown, Pin, Trash, MoreVertical, Edit
 } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export default function DashboardPage() {
   const router = useRouter();
   
   // App states
-  const [currentUser, setCurrentUser] = useState<{ email: string; name?: string } | null>(null);
+  const [currentUser, setCurrentUser] = useState<{ email: string; name?: string; isTrial?: boolean; trialUploadCount?: number } | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [chats, setChats] = useState<Chat[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -106,14 +106,62 @@ export default function DashboardPage() {
   const [customBizGoal, setCustomBizGoal] = useState('');
   const [customUserGoal, setCustomUserGoal] = useState('');
   const [customNotes, setCustomNotes] = useState('');
-  const [bizGoalDefined, setBizGoalDefined] = useState(false);
   const [userGoalDefined, setUserGoalDefined] = useState(false);
 
   
   // Running Critique States
   const [isCritiquing, setIsCritiquing] = useState(false);
-  const [critiqueError, setCritiqueError] = useState('');
   const [demoNotice, setDemoNotice] = useState(false);
+  const [loadingText, setLoadingText] = useState('Smart Critique is auditing visual heuristics and WCAG guidelines...');
+
+  const getLoadingText = (textInput: string, isVisualAudit = false): string => {
+    const text = textInput.toLowerCase();
+    
+    if (isVisualAudit) {
+      if (text.includes('heuristic')) {
+        return 'Smart Critique is auditing visual usability heuristics on your screenshot... 🔍';
+      }
+      if (text.includes('accessibility') || text.includes('wcag') || text.includes('contrast')) {
+        return 'Smart Critique is evaluating WCAG accessibility compliance on your screenshot... ♿';
+      }
+      if (text.includes('psychology') || text.includes('cognitive') || text.includes('hick') || text.includes('fitt')) {
+        return 'Smart Critique is assessing cognitive and behavioral design patterns... 🧠';
+      }
+      return 'Smart Critique is auditing visual heuristics, WCAG accessibility, and psychology principles... 🎨';
+    }
+
+    if (text.includes('heuristic')) {
+      return 'Smart Critique is analyzing usability heuristics... 🔍';
+    }
+    if (text.includes('accessibility') || text.includes('wcag') || text.includes('contrast') || text.includes('color')) {
+      return 'Smart Critique is evaluating WCAG accessibility and contrast guidelines... ♿';
+    }
+    if (text.includes('psychology') || text.includes('cognitive') || text.includes('hick') || text.includes('fitt')) {
+      return 'Smart Critique is assessing cognitive psychology and user behavior... 🧠';
+    }
+    if (text.includes('copy') || text.includes('text') || text.includes('words') || text.includes('heading')) {
+      return 'Smart Critique is reviewing copywriting and typography clarity... ✍️';
+    }
+    if (text.includes('spacing') || text.includes('align') || text.includes('grid') || text.includes('padding')) {
+      return 'Smart Critique is evaluating UI spacing and grid alignment... 📐';
+    }
+    if (text.includes('button') || text.includes('cta') || text.includes('action')) {
+      return 'Smart Critique is analyzing call-to-action buttons and interactives... 🎯';
+    }
+    if (text.includes('menu') || text.includes('navigation') || text.includes('header') || text.includes('footer')) {
+      return 'Smart Critique is checking navigation and structure layout... 🗺️';
+    }
+    
+    // Generic options
+    const genericTexts = [
+      'Smart Critique is thinking about your query... 💭',
+      'Smart Critique is analyzing your input... ⚙️',
+      'Smart Critique is evaluating your request... ⏳',
+      'Smart Critique is formulating a response... 🤖'
+    ];
+    const hash = Math.abs(textInput.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)) % genericTexts.length;
+    return genericTexts[hash];
+  };
 
   // Pin Canvas & Zoom States
   const [selectedPin, setSelectedPin] = useState<IssuePin | null>(null);
@@ -243,7 +291,6 @@ export default function DashboardPage() {
     setCustomBizGoal('');
     setCustomUserGoal('');
     setCustomNotes('');
-    setBizGoalDefined(false);
     setUserGoalDefined(false);
   }, [activeChatId]);
 
@@ -615,6 +662,27 @@ export default function DashboardPage() {
     }
   };
 
+  // Clipboard Paste Image Handler
+  const handlePaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    const items = e.clipboardData?.items;
+    if (!items) return;
+
+    const filesToUpload: File[] = [];
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf('image') !== -1) {
+        const file = items[i].getAsFile();
+        if (file) {
+          filesToUpload.push(file);
+        }
+      }
+    }
+
+    if (filesToUpload.length > 0) {
+      e.preventDefault();
+      uploadPendingFiles(filesToUpload);
+    }
+  };
+
   const uploadPendingFiles = async (files: File[]) => {
     setIsUploading(true);
     setUploadError('');
@@ -661,7 +729,7 @@ export default function DashboardPage() {
           }
         }
       }
-    } catch (err) {
+    } catch {
       setUploadError('Failed to upload images.');
     } finally {
       setIsUploading(false);
@@ -722,7 +790,6 @@ export default function DashboardPage() {
         setCustomBizGoal('');
         setCustomUserGoal('');
         setCustomNotes('');
-        setBizGoalDefined(false);
         setUserGoalDefined(false);
 
         // Save a temporary assistant scanning message in the database
@@ -766,7 +833,6 @@ export default function DashboardPage() {
 
             // Handle pre-defined business goals
             if (preData.businessGoalDefined && preData.extractedBusinessGoal) {
-              setBizGoalDefined(true);
               setSelectedBizGoal(preData.extractedBusinessGoal);
               setCustomBizGoal(preData.extractedBusinessGoal);
             } else if (preData.suggestedBusinessGoals?.length > 0) {
@@ -859,7 +925,7 @@ export default function DashboardPage() {
         }
       } else {
         // Text-only message
-        triggerGenericAIResponse();
+        triggerLiveAIResponse(userText);
       }
     } catch (err) {
       console.error('Failed to send message:', err);
@@ -935,8 +1001,9 @@ export default function DashboardPage() {
     uGoal: string, 
     notes: string
   ) => {
+    const auditContext = notes || `${bizGoal} ${uGoal}`;
+    setLoadingText(getLoadingText(auditContext, true));
     setIsCritiquing(true);
-    setCritiqueError('');
     setDemoNotice(false);
 
     try {
@@ -970,8 +1037,6 @@ export default function DashboardPage() {
       const data = await res.json();
       
       if (data.error) {
-        setCritiqueError(data.error);
-        
         const errorMsgRes = await fetch('/api/messages', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -1012,31 +1077,62 @@ export default function DashboardPage() {
             ...prev,
             [aiMsgData.message.id]: data.critiques || []
           }));
+
+          // Re-fetch user details to refresh trial count
+          fetch('/api/auth/me')
+            .then(meRes => meRes.json())
+            .then(meData => {
+              if (meData.authenticated) {
+                setCurrentUser(meData.user);
+              }
+            })
+            .catch(meErr => console.error('Failed to refresh user details:', meErr));
         }
       }
-    } catch (err) {
-      setCritiqueError('Failed to run design critique.');
+    } catch {
+      // Failed to run design critique
     } finally {
       setIsCritiquing(false);
     }
   };
 
-  const triggerGenericAIResponse = () => {
+  const triggerLiveAIResponse = (userText: string) => {
+    setLoadingText(getLoadingText(userText, false));
+    setIsCritiquing(true);
+    
     setTimeout(async () => {
-      const aiMsgRes = await fetch('/api/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chatId: activeChatId,
-          sender: 'assistant',
-          text: `I'm ready to review your mockups! You can upload a new screenshot at any time by clicking the image icon below.`
-        })
-      });
-      const aiMsgData = await aiMsgRes.json();
-      if (aiMsgData.success) {
-        setMessages(prev => [...prev, aiMsgData.message]);
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chatId: activeChatId,
+            userText: userText
+          })
+        });
+        const data = await res.json();
+        
+        if (data.success && data.text) {
+          const aiMsgRes = await fetch('/api/messages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              chatId: activeChatId,
+              sender: 'assistant',
+              text: data.text
+            })
+          });
+          const aiMsgData = await aiMsgRes.json();
+          if (aiMsgData.success) {
+            setMessages(prev => [...prev, aiMsgData.message]);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to get conversational AI response:', err);
+      } finally {
+        setIsCritiquing(false);
       }
-    }, 800);
+    }, 500);
   };
 
   // Categorized Pin Filters
@@ -1435,6 +1531,24 @@ export default function DashboardPage() {
             </div>
           </div>
 
+          {/* Trial Status Banner */}
+          {currentUser?.isTrial && (
+            <div className="bg-amber-50 border-b border-amber-200 px-4 py-2.5 flex items-center justify-between text-xs text-amber-800 shrink-0 font-medium animate-fade-in shadow-2xs">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-amber-600 animate-pulse shrink-0" />
+                <span>
+                  <strong>Trial Mode:</strong> {currentUser.trialUploadCount || 0}/3 free uploads used. Sign in to save your audit history permanently.
+                </span>
+              </div>
+              <button 
+                onClick={handleLogout}
+                className="bg-amber-600 hover:bg-amber-700 text-white font-bold px-3 py-1 rounded-[var(--radius-md)] transition active:scale-95 cursor-pointer text-[10px] shadow-xs"
+              >
+                Sign in
+              </button>
+            </div>
+          )}
+
           {/* DEMO MODE WARNING BANNER */}
           {demoNotice && (
             <div className="bg-[var(--color-feedback-warning-bg)] border-b border-[var(--color-border-warning)] px-4 py-2 flex items-center gap-2 text-[var(--color-text-warning)] text-[10px] shrink-0">
@@ -1475,8 +1589,6 @@ export default function DashboardPage() {
               )}
 
               {messages.map((m) => {
-                const critique = critiques[m.id];
-                
                 return (
                   <div 
                     key={m.id}
@@ -1514,27 +1626,28 @@ export default function DashboardPage() {
 
                       {/* INLINE CRITIQUE CUSTOM COMPONENT BLOCK */}
                       {m.hasCritique && critiques[m.id] && critiques[m.id].length > 0 && (
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mt-4">
-                          {critiques[m.id].map((crit, critIdx) => (
-                            <div key={crit.id} className="border border-[var(--color-border-default)] rounded-[var(--radius-2xl)] bg-[var(--color-surface-card)] shadow-md overflow-hidden flex flex-col">
-                              
-                              {/* Header showing image path name */}
-                              <div className="px-4 py-2.5 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-between">
-                                <span className="text-[10px] font-bold text-[var(--color-text-primary)] truncate max-w-[80%]" title={crit.imagePath.split('/').pop()}>
-                                  {crit.imagePath.split('/').pop() || 'Screenshot'}
-                                </span>
-                                <span className="text-[8px] text-[var(--color-text-tertiary)] font-bold uppercase tracking-wider bg-white border border-[var(--color-border-default)] px-1.5 py-0.5 rounded">
-                                  Screen {critIdx + 1}
-                                </span>
-                              </div>
+                        critiques[m.id].length === 1 ? (
+                          // SINGLE SCREEN AUDIT: FULL WIDTH & SPLIT LAYOUT ON DESKTOP
+                          <div className="w-full mt-4 border border-[var(--color-border-default)] rounded-[var(--radius-2xl)] bg-[var(--color-surface-card)] shadow-md overflow-hidden flex flex-col">
+                            {/* Header showing image path name */}
+                            <div className="px-4 py-2.5 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-between">
+                              <span className="text-[10px] font-bold text-[var(--color-text-primary)] truncate max-w-[80%]" title={critiques[m.id][0].imagePath.split('/').pop()}>
+                                {critiques[m.id][0].imagePath.split('/').pop() || 'Screenshot'}
+                              </span>
+                              <span className="text-[8px] text-[var(--color-text-tertiary)] font-bold uppercase tracking-wider bg-white border border-[var(--color-border-default)] px-1.5 py-0.5 rounded">
+                                Smart Critique Audit
+                              </span>
+                            </div>
 
-                              {/* Image with Pins */}
-                              <div className="p-4 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-center relative shrink-0">
-                                <div className="relative border border-[var(--color-border-default)] rounded-[var(--radius-lg)] overflow-hidden shadow-xs max-w-full max-h-[250px] bg-white">
-                                  <img src={crit.imagePath} alt={`Audited screen ${critIdx + 1}`} className="max-w-full max-h-[250px] object-contain" />
+                            {/* Split Content Area */}
+                            <div className="flex flex-col lg:flex-row flex-1">
+                              {/* Left Panel: Image with pins */}
+                              <div className="lg:w-[50%] p-4 border-b lg:border-b-0 lg:border-r border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-center relative shrink-0">
+                                <div className="relative border border-[var(--color-border-default)] rounded-[var(--radius-lg)] overflow-hidden shadow-xs w-full max-h-[420px] bg-white flex items-center justify-center">
+                                  <img src={critiques[m.id][0].imagePath} alt="Audited screen" className="max-w-full max-h-[420px] object-contain" />
                                   
                                   {/* Pins absolute mapped */}
-                                  {getFilteredPins(crit).map((pin) => (
+                                  {getFilteredPins(critiques[m.id][0]).map((pin) => (
                                     <button
                                       key={pin.id}
                                       onClick={() => setSelectedPin(pin)}
@@ -1555,110 +1668,260 @@ export default function DashboardPage() {
                                 </div>
                               </div>
 
-                              {/* Category Filters inside bubble */}
-                              <div className="px-3 py-2 border-b border-[var(--color-border-default)] flex gap-1 select-none overflow-x-auto shrink-0 bg-[var(--color-surface-card)]">
-                                <button
-                                  onClick={() => setCategoryFilter('all')}
-                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition cursor-pointer ${
-                                    categoryFilter === 'all' 
-                                      ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
-                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-gray-100)]'
-                                  }`}
-                                >
-                                  All
-                                </button>
-                                <button
-                                  onClick={() => setCategoryFilter('accessibility')}
-                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                    categoryFilter === 'accessibility' 
-                                      ? 'border-[var(--color-border-error)] bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] font-semibold' 
-                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                                  }`}
-                                >
-                                  <span className="h-1 w-1 rounded-full bg-[var(--color-red-500)]" />
-                                  Accessibility
-                                </button>
-                                <button
-                                  onClick={() => setCategoryFilter('heuristic')}
-                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                    categoryFilter === 'heuristic' 
-                                      ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
-                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                                  }`}
-                                >
-                                  <span className="h-1 w-1 rounded-full bg-[var(--color-brand-500)]" />
-                                  Heuristics
-                                </button>
-                                <button
-                                  onClick={() => setCategoryFilter('psychology')}
-                                  className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
-                                    categoryFilter === 'psychology' 
-                                      ? 'border-[var(--color-border-warning)] bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] font-semibold' 
-                                      : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                                  }`}
-                                >
-                                  <span className="h-1 w-1 rounded-full bg-[var(--color-amber-500)]" />
-                                  Psychology
-                                </button>
-                              </div>
+                              {/* Right Panel: Controls & Solutions */}
+                              <div className="lg:w-[50%] flex flex-col bg-[var(--color-surface-card)]">
+                                {/* Category Filters inside bubble */}
+                                <div className="px-3 py-2 border-b border-[var(--color-border-default)] flex gap-1 select-none overflow-x-auto shrink-0 bg-[var(--color-surface-card)]">
+                                  <button
+                                    onClick={() => setCategoryFilter('all')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition cursor-pointer ${
+                                      categoryFilter === 'all' 
+                                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-gray-100)]'
+                                    }`}
+                                  >
+                                    All
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('accessibility')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'accessibility' 
+                                        ? 'border-[var(--color-border-error)] bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-red-500)]" />
+                                    Accessibility
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('heuristic')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'heuristic' 
+                                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-brand-500)]" />
+                                    Heuristics
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('psychology')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'psychology' 
+                                        ? 'border-[var(--color-border-warning)] bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-amber-500)]" />
+                                    Psychology
+                                  </button>
+                                </div>
 
-                              {/* Selected Pin info details */}
-                              {selectedPin && crit.issues.some(p => p.id === selectedPin.id) ? (
-                                <div className="p-3.5 bg-[var(--color-surface-sunken)] border-b border-[var(--color-border-default)] animate-fade-in flex-1">
-                                  <div className="flex items-start justify-between">
-                                    <div className="space-y-0.5">
-                                      <span className={`text-[7px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded ${
-                                        selectedPin.severity === 'high' 
-                                          ? 'bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] border border-[var(--color-border-error)]' 
-                                          : selectedPin.severity === 'medium'
-                                          ? 'bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] border border-[var(--color-border-warning)]'
-                                          : 'bg-[var(--color-gray-150)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
-                                      }`}>
-                                        {selectedPin.severity} Severity
-                                      </span>
-                                      <h4 className="text-[10px] font-bold mt-1 text-[var(--color-text-primary)]">{selectedPin.title}</h4>
+                                {/* Selected Pin info details */}
+                                {selectedPin && critiques[m.id][0].issues.some(p => p.id === selectedPin.id) ? (
+                                  <div className="p-3.5 bg-[var(--color-surface-sunken)] border-b border-[var(--color-border-default)] animate-fade-in shrink-0">
+                                    <div className="flex items-start justify-between">
+                                      <div className="space-y-0.5">
+                                        <span className={`text-[7px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded ${
+                                          selectedPin.severity === 'high' 
+                                            ? 'bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] border border-[var(--color-border-error)]' 
+                                            : selectedPin.severity === 'medium'
+                                            ? 'bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] border border-[var(--color-border-warning)]'
+                                            : 'bg-[var(--color-gray-150)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                        }`}>
+                                          {selectedPin.severity} Severity
+                                        </span>
+                                        <h4 className="text-[10px] font-bold mt-1 text-[var(--color-text-primary)]">{selectedPin.title}</h4>
+                                      </div>
+                                      <button 
+                                        onClick={() => setSelectedPin(null)} 
+                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] text-[9px] cursor-pointer hover:underline"
+                                      >
+                                        Clear Pin
+                                      </button>
                                     </div>
-                                    <button 
-                                      onClick={() => setSelectedPin(null)} 
-                                      className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] text-[9px] cursor-pointer hover:underline"
-                                    >
-                                      Clear Pin
-                                    </button>
+                                    <p className="text-[9px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{selectedPin.description}</p>
                                   </div>
-                                  <p className="text-[9px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{selectedPin.description}</p>
-                                </div>
-                              ) : (
-                                <div className="p-2.5 bg-[var(--color-brand-50)] border-b border-[var(--color-brand-100)] text-[var(--color-text-secondary)] text-[9px] flex items-center gap-1.5">
-                                  <Lightbulb className="h-3 w-3 text-[var(--color-brand-500)] shrink-0" />
-                                  <span>Click any **! pin** on the screenshot to inspect details.</span>
-                                </div>
-                              )}
+                                ) : (
+                                  <div className="p-2.5 bg-[var(--color-brand-50)] border-b border-[var(--color-brand-100)] text-[var(--color-text-secondary)] text-[9px] flex items-center gap-1.5 shrink-0">
+                                    <Lightbulb className="h-3 w-3 text-[var(--color-brand-500)] shrink-0" />
+                                    <span>Click any **! pin** on the screenshot to inspect details.</span>
+                                  </div>
+                                )}
 
-                              {/* Remedies list */}
-                              <div className="p-3.5 space-y-2 flex-1">
-                                <h4 className="text-[10px] font-bold text-[var(--color-text-brand)] border-b border-[var(--color-border-default)] pb-1 flex items-center gap-1.5">
-                                  <Lightbulb className="h-3.5 w-3.5" />
-                                  Remedies & Solutions
-                                </h4>
-                                <div className="text-[10px] text-[var(--color-text-secondary)] space-y-2 leading-normal max-h-[160px] overflow-y-auto pr-1">
-                                  {crit.remedies.split('\n').map((line, idx) => {
-                                    if (line.startsWith('####')) {
-                                      return <h5 key={idx} className="text-[10px] font-bold text-[var(--color-text-primary)] mt-2.5 leading-tight">{line.replace('####', '')}</h5>;
-                                    }
-                                    if (line.startsWith('###')) {
-                                      return <h4 key={idx} className="text-[10px] font-extrabold text-[var(--color-text-brand)] mt-3 border-b border-[var(--color-border-subtle)] pb-0.5 leading-normal">{line.replace('###', '')}</h4>;
-                                    }
-                                    if (line.startsWith('* ') || line.startsWith('- ')) {
-                                      return <li key={idx} className="ml-3 list-disc text-[var(--color-text-secondary)] pl-0.5">{line.substring(2)}</li>;
-                                    }
-                                    if (line.trim() === '') return null;
-                                    return <p key={idx}>{line}</p>;
-                                  })}
+                                {/* Remedies list */}
+                                <div className="p-3.5 space-y-2 flex-1 flex flex-col min-h-0">
+                                  <h4 className="text-[10px] font-bold text-[var(--color-text-brand)] border-b border-[var(--color-border-default)] pb-1 flex items-center gap-1.5">
+                                    <Lightbulb className="h-3.5 w-3.5" />
+                                    Remedies & Solutions
+                                  </h4>
+                                  <div className="text-[10px] text-[var(--color-text-secondary)] space-y-2 leading-normal overflow-y-auto pr-1 flex-1 max-h-[220px] lg:max-h-[300px]">
+                                    {critiques[m.id][0].remedies.split('\n').map((line, idx) => {
+                                      if (line.startsWith('####')) {
+                                        return <h5 key={idx} className="text-[10px] font-bold text-[var(--color-text-primary)] mt-2.5 leading-tight">{line.replace('####', '')}</h5>;
+                                      }
+                                      if (line.startsWith('###')) {
+                                        return <h4 key={idx} className="text-[10px] font-extrabold text-[var(--color-text-brand)] mt-3 border-b border-[var(--color-border-subtle)] pb-0.5 leading-normal">{line.replace('###', '')}</h4>;
+                                      }
+                                      if (line.startsWith('* ') || line.startsWith('- ')) {
+                                        return <li key={idx} className="ml-3 list-disc text-[var(--color-text-secondary)] pl-0.5">{line.substring(2)}</li>;
+                                      }
+                                      if (line.trim() === '') return null;
+                                      return <p key={idx}>{line}</p>;
+                                    })}
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          ))}
-                        </div>
+                          </div>
+                        ) : (
+                          // MULTIPLE SCREENS AUDIT: ORIGINAL SIDE-BY-SIDE GRID
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mt-4">
+                            {critiques[m.id].map((crit, critIdx) => (
+                              <div key={crit.id} className="border border-[var(--color-border-default)] rounded-[var(--radius-2xl)] bg-[var(--color-surface-card)] shadow-md overflow-hidden flex flex-col">
+                                
+                                {/* Header showing image path name */}
+                                <div className="px-4 py-2.5 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-between">
+                                  <span className="text-[10px] font-bold text-[var(--color-text-primary)] truncate max-w-[80%]" title={crit.imagePath.split('/').pop()}>
+                                    {crit.imagePath.split('/').pop() || 'Screenshot'}
+                                  </span>
+                                  <span className="text-[8px] text-[var(--color-text-tertiary)] font-bold uppercase tracking-wider bg-white border border-[var(--color-border-default)] px-1.5 py-0.5 rounded">
+                                    Screen {critIdx + 1}
+                                  </span>
+                                </div>
+
+                                {/* Image with Pins */}
+                                <div className="p-4 border-b border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] flex items-center justify-center relative shrink-0">
+                                  <div className="relative border border-[var(--color-border-default)] rounded-[var(--radius-lg)] overflow-hidden shadow-xs max-w-full max-h-[250px] bg-white">
+                                    <img src={crit.imagePath} alt={`Audited screen ${critIdx + 1}`} className="max-w-full max-h-[250px] object-contain" />
+                                    
+                                    {/* Pins absolute mapped */}
+                                    {getFilteredPins(crit).map((pin) => (
+                                      <button
+                                        key={pin.id}
+                                        onClick={() => setSelectedPin(pin)}
+                                        style={{ left: `${pin.x}%`, top: `${pin.y}%` }}
+                                        className={`absolute transform -translate-x-1/2 -translate-y-1/2 h-5.5 w-5.5 rounded-full border flex items-center justify-center font-bold text-[9px] shadow-md transition cursor-pointer hover:scale-125 ${
+                                          selectedPin?.id === pin.id ? 'scale-125 ring-2 ring-indigo-500 ring-offset-2 ring-offset-white' : ''
+                                        } ${
+                                          pin.category === 'accessibility' 
+                                            ? 'bg-[var(--color-red-500)] border-red-300 text-white animate-pulse' 
+                                            : pin.category === 'heuristic'
+                                            ? 'bg-[var(--color-brand-500)] border-brand-300 text-white'
+                                            : 'bg-[var(--color-amber-500)] border-amber-300 text-white'
+                                        }`}
+                                      >
+                                        !
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+
+                                {/* Category Filters inside bubble */}
+                                <div className="px-3 py-2 border-b border-[var(--color-border-default)] flex gap-1 select-none overflow-x-auto shrink-0 bg-[var(--color-surface-card)]">
+                                  <button
+                                    onClick={() => setCategoryFilter('all')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition cursor-pointer ${
+                                      categoryFilter === 'all' 
+                                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)] hover:bg-[var(--color-gray-100)]'
+                                    }`}
+                                  >
+                                    All
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('accessibility')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'accessibility' 
+                                        ? 'border-[var(--color-border-error)] bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-red-500)]" />
+                                    Accessibility
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('heuristic')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'heuristic' 
+                                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-brand-500)]" />
+                                    Heuristics
+                                  </button>
+                                  <button
+                                    onClick={() => setCategoryFilter('psychology')}
+                                    className={`text-[8px] px-2 py-0.5 rounded-full border transition flex items-center gap-1 cursor-pointer ${
+                                      categoryFilter === 'psychology' 
+                                        ? 'border-[var(--color-border-warning)] bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] font-semibold' 
+                                        : 'border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                    }`}
+                                  >
+                                    <span className="h-1 w-1 rounded-full bg-[var(--color-amber-500)]" />
+                                    Psychology
+                                  </button>
+                                </div>
+
+                                {/* Selected Pin info details */}
+                                {selectedPin && crit.issues.some(p => p.id === selectedPin.id) ? (
+                                  <div className="p-3.5 bg-[var(--color-surface-sunken)] border-b border-[var(--color-border-default)] animate-fade-in flex-1">
+                                    <div className="flex items-start justify-between">
+                                      <div className="space-y-0.5">
+                                        <span className={`text-[7px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded ${
+                                          selectedPin.severity === 'high' 
+                                            ? 'bg-[var(--color-feedback-error-bg)] text-[var(--color-text-danger)] border border-[var(--color-border-error)]' 
+                                            : selectedPin.severity === 'medium'
+                                            ? 'bg-[var(--color-feedback-warning-bg)] text-[var(--color-text-warning)] border border-[var(--color-border-warning)]'
+                                            : 'bg-[var(--color-gray-150)] border border-[var(--color-border-default)] text-[var(--color-text-secondary)]'
+                                        }`}>
+                                          {selectedPin.severity} Severity
+                                        </span>
+                                        <h4 className="text-[10px] font-bold mt-1 text-[var(--color-text-primary)]">{selectedPin.title}</h4>
+                                      </div>
+                                      <button 
+                                        onClick={() => setSelectedPin(null)} 
+                                        className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] text-[9px] cursor-pointer hover:underline"
+                                      >
+                                        Clear Pin
+                                      </button>
+                                    </div>
+                                    <p className="text-[9px] text-[var(--color-text-secondary)] mt-1.5 leading-relaxed">{selectedPin.description}</p>
+                                  </div>
+                                ) : (
+                                  <div className="p-2.5 bg-[var(--color-brand-50)] border-b border-[var(--color-brand-100)] text-[var(--color-text-secondary)] text-[9px] flex items-center gap-1.5">
+                                    <Lightbulb className="h-3 w-3 text-[var(--color-brand-500)] shrink-0" />
+                                    <span>Click any **! pin** on the screenshot to inspect details.</span>
+                                  </div>
+                                )}
+
+                                {/* Remedies list */}
+                                <div className="p-3.5 space-y-2 flex-1">
+                                  <h4 className="text-[10px] font-bold text-[var(--color-text-brand)] border-b border-[var(--color-border-default)] pb-1 flex items-center gap-1.5">
+                                    <Lightbulb className="h-3.5 w-3.5" />
+                                    Remedies & Solutions
+                                  </h4>
+                                  <div className="text-[10px] text-[var(--color-text-secondary)] space-y-2 leading-normal max-h-[160px] overflow-y-auto pr-1">
+                                    {crit.remedies.split('\n').map((line, idx) => {
+                                      if (line.startsWith('####')) {
+                                        return <h5 key={idx} className="text-[10px] font-bold text-[var(--color-text-primary)] mt-2.5 leading-tight">{line.replace('####', '')}</h5>;
+                                      }
+                                      if (line.startsWith('###')) {
+                                        return <h4 key={idx} className="text-[10px] font-extrabold text-[var(--color-text-brand)] mt-3 border-b border-[var(--color-border-subtle)] pb-0.5 leading-normal">{line.replace('###', '')}</h4>;
+                                      }
+                                      if (line.startsWith('* ') || line.startsWith('- ')) {
+                                        return <li key={idx} className="ml-3 list-disc text-[var(--color-text-secondary)] pl-0.5">{line.substring(2)}</li>;
+                                      }
+                                      if (line.trim() === '') return null;
+                                      return <p key={idx}>{line}</p>;
+                                    })}
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )
                       )}
 
                       <span className={`text-[9px] text-[var(--color-text-tertiary)] block ${m.sender === 'user' ? 'text-right pr-1' : 'text-left pl-1'}`}>
@@ -1678,7 +1941,7 @@ export default function DashboardPage() {
               {isCritiquing && (
                 <div className="flex gap-4 items-center p-4 bg-[var(--color-surface-card)] border border-[var(--color-border-default)] rounded-[var(--radius-xl)] shadow-xs w-fit">
                   <Loader2 className="h-4 w-4 animate-spin text-[var(--color-brand-500)]" />
-                  <span className="text-xs text-[var(--color-text-secondary)]">Gemini is auditing visual heuristics and WCAG guidelines...</span>
+                  <span className="text-xs text-[var(--color-text-secondary)]">{loadingText}</span>
                 </div>
               )}
 
@@ -1733,7 +1996,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="space-y-1">
                         <h4 className="text-xs font-bold text-[var(--color-text-primary)]">
-                          Gemini is analyzing your screen...
+                          Smart Critique is analyzing your screen...
                         </h4>
                         <p className="text-[10px] text-[var(--color-text-tertiary)] max-w-[280px] leading-relaxed">
                           Detecting user flows, screen elements, and context to generate tailored design goals.
@@ -1967,59 +2230,81 @@ export default function DashboardPage() {
               )}
 
               {/* Chat Input Bar */}
-              <form onSubmit={handleSendMessage} className="flex gap-2 items-end">
-                <input 
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  accept="image/png, image/jpeg, image/jpg"
-                  multiple
-                  className="hidden"
-                />
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  disabled={isUploading || isCritiquing || goalWizardStep > 0}
-                  className="p-3 border border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] rounded-[var(--radius-lg)] hover:bg-[var(--color-gray-100)] hover:border-[var(--color-border-strong)] transition flex items-center justify-center shrink-0 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] h-11 w-11 cursor-pointer"
-                  title="Upload design screenshot"
-                >
-                  {isUploading ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                  ) : (
-                    <ImageIcon className="h-5 w-5" />
-                  )}
-                </button>
-                <textarea 
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  disabled={goalWizardStep > 0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !e.shiftKey) {
-                      e.preventDefault();
-                      handleSendMessage(e);
+              {currentUser?.isTrial && (currentUser.trialUploadCount || 0) >= 3 ? (
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-[var(--radius-xl)] flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left shadow-xs mb-2">
+                  <div className="space-y-1">
+                    <h4 className="text-xs font-bold text-amber-900">Trial Limit Reached 🛑</h4>
+                    <p className="text-[11px] text-amber-700 leading-normal">
+                      You have used all 3 free trial uploads. Sign in now to save your audit history permanently and run unlimited audits!
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="w-full md:w-auto h-9 px-4 bg-amber-600 hover:bg-amber-700 text-white rounded-[var(--radius-lg)] font-bold text-xs transition duration-150 active:scale-95 cursor-pointer shrink-0 shadow-xs"
+                  >
+                    Sign in to continue
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSendMessage} className="flex gap-2 items-end">
+                  <input 
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    accept="image/png, image/jpeg, image/jpg"
+                    multiple
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    disabled={isUploading || isCritiquing || goalWizardStep > 0}
+                    className="p-3 border border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] rounded-[var(--radius-lg)] hover:bg-[var(--color-gray-100)] hover:border-[var(--color-border-strong)] transition flex items-center justify-center shrink-0 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] h-11 w-11 cursor-pointer"
+                    title="Upload design screenshot"
+                  >
+                    {isUploading ? (
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <ImageIcon className="h-5 w-5" />
+                    )}
+                  </button>
+                  <textarea 
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    disabled={goalWizardStep > 0}
+                    onPaste={handlePaste}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSendMessage(e);
+                      }
+                    }}
+                    placeholder={
+                      goalWizardStep > 0 
+                        ? "Please complete the wizard popup above to proceed..." 
+                        : "Type a message or upload screenshot..."
                     }
-                  }}
-                  placeholder={
-                    goalWizardStep > 0 
-                      ? "Please complete the wizard popup above to proceed..." 
-                      : "Type a message or upload screenshot..."
-                  }
-                  rows={1}
-                  className="flex-1 py-3 px-4 border border-[var(--color-border-default)] rounded-[var(--radius-lg)] bg-[var(--color-surface-sunken)] focus:bg-white text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] text-xs focus:outline-none focus:border-[var(--color-border-focus)] focus:ring-2 focus:ring-[var(--color-brand-500)]/20 transition resize-none min-h-[44px] max-h-[120px] overflow-y-auto leading-normal py-2.5"
-                />
-                <button
-                  type="submit"
-                  disabled={isCritiquing || goalWizardStep > 0}
-                  className="p-3 bg-[var(--color-action-primary)] hover:bg-[var(--color-action-primary-hover)] active:bg-[var(--color-action-primary-pressed)] rounded-[var(--radius-lg)] text-[var(--color-text-inverse)] transition shrink-0 h-11 w-11 flex items-center justify-center cursor-pointer active:translate-y-[0.5px] disabled:opacity-50"
-                >
-                  <Send className="h-4 w-4" />
-                </button>
-              </form>
+                    rows={1}
+                    className="flex-1 py-3 px-4 border border-[var(--color-border-default)] rounded-[var(--radius-lg)] bg-[var(--color-surface-sunken)] focus:bg-white text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] text-xs focus:outline-none focus:border-[var(--color-border-focus)] focus:ring-2 focus:ring-[var(--color-brand-500)]/20 transition resize-none min-h-[44px] max-h-[120px] overflow-y-auto leading-normal py-2.5"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isCritiquing || goalWizardStep > 0}
+                    className="p-3 bg-[var(--color-action-primary)] hover:bg-[var(--color-action-primary-hover)] active:bg-[var(--color-action-primary-pressed)] rounded-[var(--radius-lg)] text-[var(--color-text-inverse)] transition shrink-0 h-11 w-11 flex items-center justify-center cursor-pointer active:translate-y-[0.5px] disabled:opacity-50"
+                  >
+                    <Send className="h-4 w-4" />
+                  </button>
+                </form>
+              )}
               {uploadError && (
                 <p className="text-[10px] text-[var(--color-text-danger)] mt-2 flex items-center gap-1">
                   <AlertCircle className="h-3.5 w-3.5" /> {uploadError}
                 </p>
               )}
+              <p className="text-[9px] text-[var(--color-text-tertiary)] text-center mt-2 font-medium tracking-wide">
+                Smart Critique is powered by AI. This is an AI suggestion and it can make mistakes, please cross-check key findings.
+              </p>
             </div>
           </div>
 

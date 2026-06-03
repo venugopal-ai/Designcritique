@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { readDb } from '@/lib/db';
 
@@ -11,11 +11,21 @@ export async function GET() {
       return NextResponse.json({ authenticated: false });
     }
 
-    const db = readDb();
+    const db = await readDb();
     const user = db.users.find(u => u.email === email);
 
     if (!user) {
       return NextResponse.json({ authenticated: false });
+    }
+
+    const isTrial = user.email.startsWith('trial_');
+    let trialUploadCount = 0;
+    if (isTrial) {
+      const userProjects = db.projects.filter(p => p.email === user.email);
+      const projectIds = userProjects.map(p => p.id);
+      const userChats = db.chats.filter(c => projectIds.includes(c.projectId));
+      const chatIds = userChats.map(c => c.id);
+      trialUploadCount = db.critiques.filter(crit => chatIds.includes(crit.chatId)).length;
     }
 
     return NextResponse.json({
@@ -24,7 +34,9 @@ export async function GET() {
         email: user.email,
         name: user.name,
         persona: user.persona,
-        onboarded: user.onboarded
+        onboarded: user.onboarded,
+        isTrial,
+        trialUploadCount
       }
     });
   } catch (error: any) {

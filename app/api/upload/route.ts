@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { saveUploadedFile } from '@/lib/db';
+import { saveUploadedFile, readDb } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
   try {
@@ -9,6 +9,19 @@ export async function POST(req: NextRequest) {
 
     if (!email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (email.startsWith('trial_')) {
+      const db = await readDb();
+      const userProjects = db.projects.filter((p: any) => p.email === email);
+      const projectIds = userProjects.map((p: any) => p.id);
+      const userChats = db.chats.filter((c: any) => projectIds.includes(c.projectId));
+      const chatIds = userChats.map((c: any) => c.id);
+      const trialUploadCount = db.critiques.filter((crit: any) => chatIds.includes(crit.chatId)).length;
+      
+      if (trialUploadCount >= 3) {
+        return NextResponse.json({ error: 'You have reached your 3-upload free trial limit. Please sign in to continue.' }, { status: 403 });
+      }
     }
 
     const formData = await req.formData();

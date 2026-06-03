@@ -11,7 +11,7 @@ export async function GET() {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     const projects = db.projects.filter(p => p.email === email);
 
     return NextResponse.json({ projects });
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Project name is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     const newProject: Project = {
       id: `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`,
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
     };
 
     db.projects.push(newProject);
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true, project: newProject });
   } catch (error: any) {
@@ -68,7 +68,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Project ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Verify project belongs to user
     const projectIndex = db.projects.findIndex(p => p.id === projectId && p.email === email);
@@ -92,7 +92,7 @@ export async function DELETE(req: NextRequest) {
     // Cascade delete critiques
     db.critiques = db.critiques.filter(c => !chatIds.includes(c.chatId));
 
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -114,7 +114,7 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'Project ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Find project and verify owner
     const project = db.projects.find(p => p.id === projectId && p.email === email);
@@ -132,7 +132,7 @@ export async function PATCH(req: NextRequest) {
       project.name = name.trim();
     }
 
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true, project });
   } catch (error: any) {

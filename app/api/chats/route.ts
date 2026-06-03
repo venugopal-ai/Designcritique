@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Project ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     const chats = db.chats.filter(c => c.projectId === projectId);
 
     return NextResponse.json({ chats });
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Project ID and Chat Name are required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Verify project belongs to user
     const project = db.projects.find(p => p.id === projectId && p.email === email);
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     };
 
     db.chats.push(newChat);
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true, chat: newChat });
   } catch (error: any) {
@@ -80,7 +80,7 @@ export async function DELETE(req: NextRequest) {
       return NextResponse.json({ error: 'Chat ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Find chat
     const chat = db.chats.find(c => c.id === chatId);
@@ -103,7 +103,7 @@ export async function DELETE(req: NextRequest) {
     // Cascade delete critiques
     db.critiques = db.critiques.filter(c => c.chatId !== chatId);
 
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -125,7 +125,7 @@ export async function PATCH(req: NextRequest) {
       return NextResponse.json({ error: 'Chat ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Find chat
     const chat = db.chats.find(c => c.id === chatId);
@@ -149,7 +149,7 @@ export async function PATCH(req: NextRequest) {
       chat.name = name.trim();
     }
 
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true, chat });
   } catch (error: any) {

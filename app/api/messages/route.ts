@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Chat ID is required' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Verify chat belongs to user's project
     const chat = db.chats.find(c => c.id === chatId);
@@ -52,7 +52,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Missing required message parameters' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Verify chat ownership
     const chat = db.chats.find(c => c.id === chatId);
@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
     };
 
     db.messages.push(newMessage);
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({ success: true, message: newMessage });
   } catch (error: any) {

@@ -1,4 +1,4 @@
-# Innoviti Design System
+# Smart Critique Design System
 > Version 1.0 · Built with Figma MCP · Primary `#004A99` · WCAG AAA
 
 ---
@@ -20,7 +20,7 @@
 
 | Property | Value |
 |---|---|
-| Product | Innoviti · B2B Merchant Payment Terminals |
+| Product | Smart Critique · Heuristic & Accessibility Design Reviews |
 | Primary color | `#004A99` (WCAG AAA — 8.60:1 on white) |
 | Font | Inter |
 | Base unit | 4px |
@@ -541,7 +541,7 @@ Pill/Segmented: 3-tab (Today/This Week/This Month) with sliding active pill
 
 ## Usage Rules
 
-### Input fields — Option A (Innoviti standard)
+### Input fields — Option A (Smart Critique standard)
 ```
 ✓ External label always above — never floating inside field
 ✓ Placeholder gives format hint (e.g. "e.g. ₹ 1,50,000")
@@ -712,4 +712,4 @@ All interactive atoms are minimum **44×44px** at MD size (WCAG 2.5.5).
 
 ---
 
-*Innoviti Design System · Figma MCP · Built by Venu*
+*Smart Critique Design System · Figma MCP · Built by Venu*

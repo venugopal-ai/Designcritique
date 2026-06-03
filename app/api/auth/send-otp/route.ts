@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { readDb, writeDb, User } from '@/lib/db';
+import { readDb, writeDb } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
-    const db = readDb();
+    const db = await readDb();
     
     // Generate a simple 6-digit OTP (e.g. 123456 or a random one)
     const otpCode = Math.floor(100000 + Math.random() * 900000).toString();
@@ -26,15 +26,17 @@ export async function POST(req: NextRequest) {
       db.users.push(user);
     }
     
-    writeDb(db);
+    await writeDb(db);
 
     console.log(`[AUTH MOCK] OTP for ${email} is ${otpCode}`);
 
-    // Return the OTP code directly for local testing convenience!
+    const isProd = process.env.NODE_ENV === 'production';
+
+    // Return the OTP code directly for local testing convenience only in development!
     return NextResponse.json({ 
       success: true, 
       message: 'OTP sent successfully (Simulated)',
-      otpCode // Returning it so the user can easily log in locally without email service setup
+      ...(isProd ? {} : { otpCode })
     });
   } catch (error: any) {
     return NextResponse.json({ error: error.message || 'Server error' }, { status: 500 });

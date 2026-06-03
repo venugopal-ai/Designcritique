@@ -1,17 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import fs from 'fs';
 import path from 'path';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { readDb, writeDb, Critique, IssuePin } from '@/lib/db';
-
-// Helper to check if file is JPEG
-function getMimeType(filePath: string): string {
-  if (filePath.endsWith('.jpg') || filePath.endsWith('.jpeg')) {
-    return 'image/jpeg';
-  }
-  return 'image/png';
-}
+import { readDb, writeDb, Critique, IssuePin, getImageBufferAndMime } from '@/lib/db';
 
 export async function POST(req: NextRequest) {
   try {
@@ -20,6 +11,19 @@ export async function POST(req: NextRequest) {
 
     if (!email) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    if (email.startsWith('trial_')) {
+      const db = await readDb();
+      const userProjects = db.projects.filter(p => p.email === email);
+      const projectIds = userProjects.map(p => p.id);
+      const userChats = db.chats.filter(c => projectIds.includes(c.projectId));
+      const chatIds = userChats.map(c => c.id);
+      const trialUploadCount = db.critiques.filter(crit => chatIds.includes(crit.chatId)).length;
+      
+      if (trialUploadCount >= 3) {
+        return NextResponse.json({ error: 'You have reached your 3-upload free trial limit. Please sign in to continue.' }, { status: 403 });
+      }
     }
 
     const { messageId, chatId, imagePath, imagePaths, businessGoal, userGoal, customNotes } = await req.json();
@@ -100,11 +104,8 @@ Here is how you can resolve the highlighted design violations on this screen to 
             }
           });
 
-          const absoluteImagePath = path.join(process.cwd(), 'public', img);
-          if (fs.existsSync(absoluteImagePath)) {
-            const imageBuffer = fs.readFileSync(absoluteImagePath);
-            const base64Data = imageBuffer.toString('base64');
-            const mimeType = getMimeType(img);
+          const { buffer, mimeType } = await getImageBufferAndMime(img);
+          const base64Data = buffer.toString('base64');
 
             const prompt = `You are an expert Product Manager and UX/UI Designer. Your job is to audit this user interface screenshot.
 You must critique the design across 3 categories:
@@ -153,9 +154,11 @@ Do not include any wrapping like \`\`\`json. Return only the raw JSON.`;
               id: issue.id || `issue-${messageId}-${idx}-${idx2}`
             }));
             remedies = jsonResult.remedies || '';
-          }
-        } catch (geminiError: any) {
-          console.error(`Gemini API call failed for image ${img}, falling back to mock:`, geminiError);
+            if (issues.length === 0) {
+              remedies = `### Wow we didn't find any issue in the screen!\n\nYou have designed it very well! There are no issues with Heuristics, Psychology, or Accessibility. This is a well-designed screen which is serving both business and user goals.`;
+            }
+        } catch (critiqueError: any) {
+          console.error(`Smart Critique API call failed for image ${img}, falling back to mock:`, critiqueError);
           // Fallback to mock issues
           issues = [
             {
@@ -169,7 +172,7 @@ Do not include any wrapping like \`\`\`json. Return only the raw JSON.`;
             }
           ];
           remedies = `### Audit Fallback for ${path.basename(img)}
-Failed to run Gemini analysis. Spacing and contrast guidelines should be verified manually.`;
+Failed to run Smart Critique analysis. Spacing and contrast guidelines should be verified manually.`;
         }
       }
 
@@ -189,9 +192,9 @@ Failed to run Gemini analysis. Spacing and contrast guidelines should be verifie
     }));
 
     // Save critiques to the database
-    const db = readDb();
+    const db = await readDb();
     db.critiques.push(...savedCritiques);
-    writeDb(db);
+    await writeDb(db);
 
     return NextResponse.json({
       success: true,
@@ -217,7 +220,7 @@ export async function GET(req: NextRequest) {
     const projectId = searchParams.get('projectId');
     const last = searchParams.get('last') === 'true';
 
-    const db = readDb();
+    const db = await readDb();
 
     if (projectId) {
       // Verify project ownership
