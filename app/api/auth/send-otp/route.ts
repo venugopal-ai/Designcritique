@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
       try {
         const resend = new Resend(resendApiKey);
         await resend.emails.send({
-          from: 'Design Critique <onboarding@resend.dev>',
+          from: 'onboarding@resend.dev',
           to: email,
           subject: 'welcome to Design critique',
           html: `<p>welcome to Design critique</p><p>Here is the OTP for login: <strong>${otpCode}</strong></p><p>This verification code will expire in 2 minutes.</p>`
