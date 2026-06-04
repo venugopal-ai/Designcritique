@@ -336,27 +336,19 @@ export default function AuthPage() {
               <label className="block text-xs font-semibold text-[var(--color-text-secondary)] mb-2">
                 What describes you best? *
               </label>
-              <div className="grid grid-cols-1 gap-2 max-h-[220px] overflow-y-auto pr-1">
+              <div className="flex flex-wrap gap-2">
                 {PERSONAS.map((p) => (
                   <button
                     key={p.id}
                     type="button"
                     onClick={() => setPersona(p.id)}
-                    className={`flex items-start gap-3 p-3.5 text-left border rounded-[var(--radius-lg)] transition-all duration-150 cursor-pointer ${
+                    className={`px-4 py-2.5 text-xs font-semibold rounded-[var(--radius-full)] border transition-all duration-150 cursor-pointer ${
                       persona === p.id
-                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)]'
+                        ? 'border-[var(--color-brand-500)] bg-[var(--color-brand-50)] text-[var(--color-text-brand)] shadow-sm'
                         : 'border-[var(--color-border-default)] bg-[var(--color-surface-sunken)] text-[var(--color-text-secondary)] hover:border-[var(--color-border-strong)] hover:bg-[var(--color-gray-100)]'
                     }`}
                   >
-                    <div className={`mt-0.5 h-4 w-4 rounded-full border flex items-center justify-center shrink-0 ${
-                      persona === p.id ? 'border-[var(--color-brand-500)] text-[var(--color-brand-500)]' : 'border-[var(--color-border-strong)]'
-                    }`}>
-                      {persona === p.id && <div className="h-2.5 w-2.5 rounded-full bg-[var(--color-brand-500)] animate-scale" />}
-                    </div>
-                    <div>
-                      <h4 className="text-xs font-bold leading-none">{p.title}</h4>
-                      <p className="text-[10px] text-[var(--color-text-tertiary)] mt-1 leading-normal">{p.desc}</p>
-                    </div>
+                    {p.title}
                   </button>
                 ))}
               </div>
