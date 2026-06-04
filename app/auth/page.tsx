@@ -40,14 +40,15 @@ export default function AuthPage() {
   }, [router]);
 
   // Handle Requesting OTP
-  const handleRequestOtp = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleRequestOtp = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
     if (!email || !email.includes('@')) {
       setError('Please enter a valid email address');
       return;
     }
     setLoading(true);
     setError('');
+    setMockOtp(null);
     
     try {
       const res = await fetch('/api/auth/send-otp', {
@@ -268,6 +269,17 @@ export default function AuthPage() {
                   className="block w-full pl-10 pr-3 py-3 border-0 rounded-[var(--radius-lg)] bg-[var(--color-gray-100)] text-[var(--color-text-primary)] tracking-[0.3em] font-mono text-center text-sm placeholder-zinc-300 focus:outline-none focus:bg-[var(--color-gray-50)] focus:ring-2 focus:ring-[var(--color-brand-500)]/20 focus:border-[var(--color-border-focus)] transition-all duration-150 h-11"
                   required
                 />
+              </div>
+              <div className="flex justify-between items-center text-[10px] text-[var(--color-text-secondary)] mt-2 px-1">
+                <span>Didn't receive the code?</span>
+                <button
+                  type="button"
+                  onClick={() => handleRequestOtp()}
+                  disabled={loading}
+                  className="text-[var(--color-brand-500)] font-semibold hover:underline cursor-pointer disabled:opacity-50"
+                >
+                  Resend OTP
+                </button>
               </div>
             </div>
 

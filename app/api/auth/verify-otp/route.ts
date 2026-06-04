@@ -12,10 +12,21 @@ export async function POST(req: NextRequest) {
     const db = await readDb(true);
     const user = db.users.find(u => u.email === email);
 
+    if (!user || !user.otpCode) {
+      return NextResponse.json({ error: 'Invalid or expired OTP code' }, { status: 400 });
+    }
+
+    const parts = user.otpCode.split('_');
+    const storedCode = parts[0];
+    const expiresAt = parts[1] ? parseInt(parts[1], 10) : null;
+
     const isProd = process.env.NODE_ENV === 'production';
     const isMasterCode = isProd && otpCode === '123456';
 
-    if (!user || (user.otpCode !== otpCode && !isMasterCode)) {
+    const codeMatches = storedCode === otpCode;
+    const notExpired = expiresAt === null || Date.now() <= expiresAt;
+
+    if (!isMasterCode && (!codeMatches || !notExpired)) {
       return NextResponse.json({ error: 'Invalid or expired OTP code' }, { status: 400 });
     }
 
