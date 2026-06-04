@@ -122,7 +122,7 @@ export async function readDb(bypassCache: boolean = false): Promise<DatabaseSche
         critiques: critiquesRes.data || []
       };
 
-      cachedDb = db;
+      cachedDb = JSON.parse(JSON.stringify(db));
       lastFetchTime = Date.now();
       return db;
     } catch (error) {
@@ -147,7 +147,7 @@ export async function writeDb(db: DatabaseSchema): Promise<void> {
   const oldDb = cachedDb;
   
   // Update cache immediately to prevent read-after-write lag
-  cachedDb = db;
+  cachedDb = JSON.parse(JSON.stringify(db));
   lastFetchTime = Date.now();
 
   try {
