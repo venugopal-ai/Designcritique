@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
-    const db = await readDb();
+    const db = await readDb(true);
     
     // Generate a simple 6-digit OTP (e.g. 123456 or a random one)
     const otpCode = Math.floor(100000 + Math.random() * 900000).toString();

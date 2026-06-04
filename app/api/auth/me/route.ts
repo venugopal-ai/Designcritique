@@ -11,7 +11,7 @@ export async function GET() {
       return NextResponse.json({ authenticated: false });
     }
 
-    const db = await readDb();
+    const db = await readDb(true);
     const user = db.users.find(u => u.email === email);
 
     if (!user) {

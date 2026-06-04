@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Email and OTP are required' }, { status: 400 });
     }
 
-    const db = await readDb();
+    const db = await readDb(true);
     const user = db.users.find(u => u.email === email);
 
     const isProd = process.env.NODE_ENV === 'production';

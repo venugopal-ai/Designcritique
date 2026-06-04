@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const db = await readDb();
+    const db = await readDb(true);
     let user = db.users.find(u => u.email === email);
 
     if (!user) {

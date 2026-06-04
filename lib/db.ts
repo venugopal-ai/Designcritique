@@ -87,18 +87,18 @@ const CACHE_TTL = 4000; // 4 seconds cache TTL
 let pendingFetch: Promise<DatabaseSchema> | null = null;
 
 // Read database from Supabase with in-memory caching and query deduplication
-export async function readDb(): Promise<DatabaseSchema> {
+export async function readDb(bypassCache: boolean = false): Promise<DatabaseSchema> {
   const now = Date.now();
   
-  if (cachedDb && (now - lastFetchTime < CACHE_TTL)) {
+  if (!bypassCache && cachedDb && (now - lastFetchTime < CACHE_TTL)) {
     return cachedDb;
   }
 
-  if (pendingFetch) {
+  if (!bypassCache && pendingFetch) {
     return pendingFetch;
   }
 
-  pendingFetch = (async () => {
+  const fetchPromise = (async () => {
     try {
       const [usersRes, projectsRes, chatsRes, messagesRes, critiquesRes] = await Promise.all([
         supabase.from('users').select('*'),
@@ -129,11 +129,17 @@ export async function readDb(): Promise<DatabaseSchema> {
       console.error('Error in readDb:', error);
       return DEFAULT_DB;
     } finally {
-      pendingFetch = null;
+      if (!bypassCache) {
+        pendingFetch = null;
+      }
     }
   })();
 
-  return pendingFetch;
+  if (!bypassCache) {
+    pendingFetch = fetchPromise;
+  }
+
+  return fetchPromise;
 }
 
 // Write/Sync database to Supabase
